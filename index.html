@@ -1,551 +1,496 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive 3D Personal Portfolio Website Using HTML CSS & JavaScript | Codehal</title>
-    <!-- Boxicons link -->
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+<html lang="zh-TW">
 
-    <!-- CSS file link -->
-    <link rel="stylesheet" href="style.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Professional Self-Introduction (CV)</title>
 
-  <body>
-    <!-- navbar -->
-    <nav class="nav">
-      <ul class="nav-list">
-        <li class="active">
-          <i class="bx bx-home-alt"></i>
-          <span class="tooltip">Home</span>
-        </li>
-        <li>
-          <i class="bx bx-user"></i>
-          <span class="tooltip">About</span>
-        </li>
-        <li>
-          <i class="bx bx-detail"></i>
-          <span class="tooltip">Resume</span>
-        </li>
-        <li>
-          <i class="bx bx-briefcase"></i>
-          <span class="tooltip">Portfolio</span>
-        </li>
-        <li>
-          <i class="bx bx-envelope"></i>
-          <span class="tooltip">Contact</span>
-        </li>
-      </ul>
-    </nav>
+  <!-- logo 圖案 存放-->
+  <link rel="icon" href="images/logo.png" type="image/png" />
 
-    <div class="container">
-      <div class="box">
-        <!-- home section -->
-        <section class="section home active">
-          <div class="home-info">
-            <h3>Hello I'm</h3>
-            <h1>Shane Theodor</h1>
-            <h3>Frontend Developer</h3>
-            <p class="desc">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima quidem necessitatibus iure commodi id ea
-              possimus eligendi aut odit cum.
-            </p>
-            <div class="btn-sci">
-              <a href="https://www.youkewang.top" target="_blank" class="btn">Download CV</a>
-              <div class="sci">
-                <a href="https://www.youkewang.top" target="_blank">
-                  <i class="bx bxl-github"></i>
-                  <span class="tooltip">Github</span>
-                </a>
-                <a href="https://www.youkewang.top" target="_blank">
-                  <i class="bx bxl-linkedin"></i>
-                  <span class="tooltip">Linkedin</span>
-                </a>
-                <a href="https://www.youkewang.top" target="_blank">
-                  <i class="bx bxl-twitter"></i>
-                  <span class="tooltip">Twitter</span>
-                </a>
-                <a href="https://www.youkewang.top" target="_blank">
-                  <i class="bx bxl-youtube"></i>
-                  <span class="tooltip">YouTube</span>
-                </a>
+  <!-- Boxicons 圖標庫連結 -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+
+  <!-- CSS 檔案連結 -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- 導航欄 -->
+  <nav class="nav">
+    <ul class="nav-list">
+      <li class="active">
+        <i class="bx bx-home-alt"></i>
+        <span class="tooltip">首頁</span>
+      </li>
+      <li>
+        <i class="bx bx-user"></i>
+        <span class="tooltip">關於</span>
+      </li>
+      <li>
+        <i class="bx bx-detail"></i>
+        <span class="tooltip">履歷</span>
+      </li>
+      <li>
+        <i class="bx bx-briefcase"></i>
+        <span class="tooltip">作品集</span>
+      </li>
+
+    </ul>
+  </nav>
+
+  <!-- 3D 立方體容器 -->
+  <div class="container">
+    <div class="box">
+      <!-- 首頁區段 -->
+      <section class="section home active">
+        <div class="home-info">
+          <h3>Hello, I'm</h3>
+          <h1>JIANG JIAXIAN</h1>
+          <h3>江家賢</h3>
+          <h3>Higher Diploma - Software Engineering (Fresh Graduate)</h3>
+          <p class="desc">
+            這是一個範例文字，通常這裡會放更詳細的個人介紹。
+          </p>
+          <div class="btn-sci">
+            <div class="resume-dropdown">
+              <button class="resume-main-btn">
+                下載履歷
+                <span class="arrow">▼</span>
+              </button>
+              <div class="resume-options">
+                <a href="/resumes/resume_zh.pdf" download>中文履歷</a>
+                <a href="/resumes/resume_en.pdf" download>English Resume</a>
+              </div>
+            </div>
+            <div class="sci">
+              <a href="https://www.youkewang.top" target="_blank">
+                <i class="bx bxl-youtube"></i>
+                <span class="tooltip">YouTube</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="img-wrapper">
+          <div class="img-box home-img">
+            <img src="images/imgs.png" alt="個人頭像" />
+          </div>
+        </div>
+      </section>
+
+      <!-- 關於區段 -->
+      <section class="section about">
+        <div class="img-wrapper">
+
+        </div>
+
+        <div class="about-info">
+          <h2 class="title">About me</h2>
+          <h3>高級文憑 - 軟件工程（應屆生）</h3>
+          <p class="desc">
+            我是一名軟件工程系的學生，專注於探索前後端技術的整合應用。在前端領域，我掌握了HTML、CSS與JavaScript的核心技能，
+            同時正在積極學習Vue和React等現代化框架，目標是打造更直觀、流暢的使用者體驗；在後端部分，我學習過Java、PHP和Python等多種語言，
+            並具備MySQL資料庫操作與Linux環境的基本知識，能夠理解系統從界面到資料層的完整運作邏輯。
+            <br />
+            <br />
+            在進入軟件領域之前，我擁有多年其他行業的實務經驗，包括建築業與機場貨運物流業。
+            這些經歷不僅鍛鍊了我與不同背景人士溝通協作的能力，更讓我深入理解實際業務流程與系統需求——例如在機場貨運工作中，
+            我親身接觸並理解物流管理系統的運作邏輯與痛點，這使我特別關注技術方案如何貼近真實使用場景。
+            <br />
+            <br />
+
+            我擅長將跨領域的經驗轉化為開發的優勢，能夠從使用者與業務端雙重視角思考問題，
+            並將理論知識轉化為具實用價值的解決方案。目前正積極尋求能夠結合技術與實務經驗的機會，
+            期望在軟件開發的實戰環境中持續成長，為團隊帶來兼具技術深度與實用價值的貢獻
+          </p>
+        </div>
+      </section>
+
+      <!-- 履歷區段（經歷、技能、教育） -->
+      <section class="section resume">
+        <h2 class="title">履歷</h2>
+        <div class="tab-box">
+          <div class="tab-list resume-list">
+            <h3>工作經歷</h3>
+          </div>
+          <div class="tab-list resume-list active">
+            <h3>技能</h3>
+          </div>
+          <div class="tab-list resume-list ">
+            <h3>教育</h3>
+          </div>
+        </div>
+
+        <div class="tab-wrapper">
+          <!-- 經歷標籤內容 -->
+          <div class="tab-grid resume-box experience">
+            <div class="tab-item resume-item">
+              <h4>2025 - 現在</h4>
+              <h4>倉務員(Part time)</h4>
+              <h4>香港空運貨站(Hactl)</h4>
+              <p>
+                這是一個範例文字，通常這裡會放工作描述。Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Sequi quo ab voluptatibus earum sapiente fuga eos, facilis doloribus ea saepe!
+              </p>
+            </div>
+
+            <div class="tab-item resume-item">
+              <h4>2021 - 2024</h4>
+              <h4>室內裝修（木工）</h4>
+              <h4>創新工程有限公司</h4>
+              <p>
+                這是一個範例文字，通常這裡會放工作描述。Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Sequi quo ab voluptatibus earum sapiente fuga eos, facilis doloribus ea saepe!
+              </p>
+            </div>
+
+            <div class="tab-item resume-item">
+              <h4>2019 - 2021</h4>
+              <h4>倉務員</h4>
+              <h4>A&S(HK) Logistics Limited</h4>
+              <p>
+                這是一個範例文字，通常這裡會放工作描述。Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Sequi quo ab voluptatibus earum sapiente fuga eos, facilis doloribus ea saepe!
+              </p>
+            </div>
+
+          </div>
+
+          <!-- 技能標籤內容 - 圖片風格進度條 -->
+          <div class="tab-grid resume-box skills active">
+
+            <!-- 前端核心技能 -->
+            <div class="tab-item resume-item">
+              <i class="bx bxl-html5"></i>
+              <div class="skill-content">
+                <div class="skill-header">
+                  <span class="skill-name">HTML5</span>
+                  <span class="skill-percent">80%</span>
+                </div>
+                <div class="skill-progress">
+                  <div class="skill-progress-bar" style="width: 80%"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-item resume-item">
+              <i class="bx bxl-css3"></i>
+              <div class="skill-content">
+                <div class="skill-header">
+                  <span class="skill-name">CSS3</span>
+                  <span class="skill-percent">70%</span>
+                </div>
+                <div class="skill-progress">
+                  <div class="skill-progress-bar" style="width: 70%"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-item resume-item">
+              <i class="bx bxl-javascript"></i>
+              <div class="skill-content">
+                <div class="skill-header">
+                  <span class="skill-name">JavaScript</span>
+                  <span class="skill-percent">55%</span>
+                </div>
+                <div class="skill-progress">
+                  <div class="skill-progress-bar" style="width: 55%"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 前端框架 -->
+            <div class="tab-item resume-item">
+              <i class="bx bxl-react"></i>
+              <div class="skill-content">
+                <div class="skill-header">
+                  <span class="skill-name">React.js</span>
+                  <span class="skill-percent">0%</span>
+                </div>
+                <div class="skill-progress">
+                  <div class="skill-progress-bar" style="width: 0%"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-item resume-item">
+              <i class="bx bxl-vuejs"></i>
+              <div class="skill-content">
+                <div class="skill-header">
+                  <span class="skill-name">Vue.js</span>
+                  <span class="skill-percent">30%</span>
+                </div>
+                <div class="skill-progress">
+                  <div class="skill-progress-bar" style="width: 30%"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 後端技能 -->
+            <div class="tab-item resume-item">
+              <i class="bx bxl-nodejs"></i>
+              <div class="skill-content">
+                <div class="skill-header">
+                  <span class="skill-name">Node.js</span>
+                  <span class="skill-percent">25%</span>
+                </div>
+                <div class="skill-progress">
+                  <div class="skill-progress-bar" style="width: 25%"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-item resume-item">
+              <i class="bx bxl-java"></i>
+              <div class="skill-content">
+                <div class="skill-header">
+                  <span class="skill-name">Java</span>
+                  <span class="skill-percent">60%</span>
+                </div>
+                <div class="skill-progress">
+                  <div class="skill-progress-bar" style="width: 60%"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-item resume-item">
+              <i class="bx bxl-php"></i>
+              <div class="skill-content">
+                <div class="skill-header">
+                  <span class="skill-name">PHP</span>
+                  <span class="skill-percent">40%</span>
+                </div>
+                <div class="skill-progress">
+                  <div class="skill-progress-bar" style="width: 40%"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-item resume-item">
+              <i class="bx bxl-python"></i>
+              <div class="skill-content">
+                <div class="skill-header">
+                  <span class="skill-name">Python</span>
+                  <span class="skill-percent">50%</span>
+                </div>
+                <div class="skill-progress">
+                  <div class="skill-progress-bar" style="width: 50%"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 系統與資料庫 -->
+            <div class="tab-item resume-item">
+              <i class="bx bxl-tux"></i>
+              <div class="skill-content">
+                <div class="skill-header">
+                  <span class="skill-name">Linux</span>
+                  <span class="skill-percent">60%</span>
+                </div>
+                <div class="skill-progress">
+                  <div class="skill-progress-bar" style="width: 60%"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-item resume-item">
+              <i class="bx bx-data"></i>
+              <div class="skill-content">
+                <div class="skill-header">
+                  <span class="skill-name">SQL / MySQL</span>
+                  <span class="skill-percent">70%</span>
+                </div>
+                <div class="skill-progress">
+                  <div class="skill-progress-bar" style="width: 70%"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- 教育標籤內容（預設啟用） -->
+          <div class="tab-grid resume-box education">
+            <div class="tab-item resume-item">
+              <h4>2024 - 2026</h4>
+              <h4>Software Engineering (Higher Diploma)</h4>
+              <h4>VTC</h4>
+              <p>
+                這是一個範例文字，通常這裡會放課程描述。Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Expedita reprehenderit asperiores quae minima, cumque facere molestiae? Numquam, facilis recusandae,
+                quidem odio nesciunt veritatis cum minus sunt, consequuntur illum repellendus id!
+              </p>
+            </div>
+
+            <div class="tab-item resume-item">
+              <h4>2022 - 2023</h4>
+              <h4>微電影製作(YiJin Diploma)</h4>
+              <h4>嶺南持續進修學院</h4>
+              <p>
+                這是一個範例文字，通常這裡會放課程描述。Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Expedita reprehenderit asperiores quae minima, cumque facere molestiae? Numquam, facilis recusandae,
+                quidem odio nesciunt veritatis cum minus sunt, consequuntur illum repellendus id!
+              </p>
+            </div>
+
+
+          </div>
+        </div>
+      </section>
+
+      <!-- 作品集區段（作品、服務） -->
+      <section class="section portfolio">
+        <h2 class="title">作品集</h2>
+        <div class="tab-box">
+          <div class="tab-list portfolio-list active">
+            <h3>我的作品</h3>
+          </div>
+        </div>
+
+        <div class="tab-wrapper">
+          <!-- 作品標籤內容 -->
+          <div class="tab-grid portfolio-box work active">
+            <div class="tab-item portfolio-item ">
+              <div class="work-img">
+                <img src="images/work1.jpg" alt="作品 1" />
+              </div>
+              <div class="work-info">
+                <h4>前端專案</h4>
+                <p>這是一個範例描述，通常這裡會放專案簡介。</p>
+                <div class="tech-used">
+                  <p>HTML5, CSS3, JavaScript</p>
+                </div>
+                <div class="portfolio-icon work-icon">
+                  <a href="#">
+                    <i class="bx bx-arrow-back"></i>
+                    <span class="tooltip">預覽</span>
+                  </a>
+                  <a href="#">
+                    <i class="bx bxl-github"></i>
+                    <span class="tooltip">Github 倉庫</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="tab-item portfolio-item">
+              <div class="work-img">
+                <img src="images/work2.jpg" alt="作品 2" />
+              </div>
+              <div class="work-info">
+                <h4>前端專案</h4>
+                <p>這是一個範例描述，通常這裡會放專案簡介。</p>
+                <div class="tech-used">
+                  <p>HTML5, CSS3, JavaScript</p>
+                </div>
+                <div class="portfolio-icon work-icon">
+                  <a href="#">
+                    <i class="bx bx-arrow-back"></i>
+                    <span class="tooltip">預覽</span>
+                  </a>
+                  <a href="#">
+                    <i class="bx bxl-github"></i>
+                    <span class="tooltip">Github 倉庫</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="tab-item portfolio-item">
+              <div class="work-img">
+                <img src="images/work3.jpg" alt="作品 3" />
+              </div>
+              <div class="work-info">
+                <h4>前端專案</h4>
+                <p>這是一個範例描述，通常這裡會放專案簡介。</p>
+                <div class="tech-used">
+                  <p>HTML5, CSS3, JavaScript</p>
+                </div>
+                <div class="portfolio-icon work-icon">
+                  <a href="#">
+                    <i class="bx bx-arrow-back"></i>
+                    <span class="tooltip">預覽</span>
+                  </a>
+                  <a href="#">
+                    <i class="bx bxl-github"></i>
+                    <span class="tooltip">Github 倉庫</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="tab-item portfolio-item">
+              <div class="work-img">
+                <img src="images/work4.jpg" alt="作品 4" />
+              </div>
+              <div class="work-info">
+                <h4>前端專案</h4>
+                <p>這是一個範例描述，通常這裡會放專案簡介。</p>
+                <div class="tech-used">
+                  <p>HTML5, CSS3, JavaScript</p>
+                </div>
+                <div class="portfolio-icon work-icon">
+                  <a href="#">
+                    <i class="bx bx-arrow-back"></i>
+                    <span class="tooltip">預覽</span>
+                  </a>
+                  <a href="#">
+                    <i class="bx bxl-github"></i>
+                    <span class="tooltip">Github 倉庫</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="tab-item portfolio-item">
+              <div class="work-img">
+                <img src="images/work5.jpg" alt="作品 5" />
+              </div>
+              <div class="work-info">
+                <h4>前端專案</h4>
+                <p>這是一個範例描述，通常這裡會放專案簡介。</p>
+                <div class="tech-used">
+                  <p>HTML5, CSS3, JavaScript</p>
+                </div>
+                <div class="portfolio-icon work-icon">
+                  <a href="#">
+                    <i class="bx bx-arrow-back"></i>
+                    <span class="tooltip">預覽</span>
+                  </a>
+                  <a href="#">
+                    <i class="bx bxl-github"></i>
+                    <span class="tooltip">Github 倉庫</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="tab-item portfolio-item">
+              <div class="work-img">
+                <img src="images/work6.jpg" alt="作品 6" />
+              </div>
+              <div class="work-info">
+                <h4>前端專案</h4>
+                <p>這是一個範例描述，通常這裡會放專案簡介。</p>
+                <div class="tech-used">
+                  <p>HTML5, CSS3, JavaScript</p>
+                </div>
+                <div class="portfolio-icon work-icon">
+                  <a href="#">
+                    <i class="bx bx-arrow-back"></i>
+                    <span class="tooltip">預覽</span>
+                  </a>
+                  <a href="#">
+                    <i class="bx bxl-github"></i>
+                    <span class="tooltip">Github 倉庫</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-          <div class="img-wrapper">
-            <div class="img-box home-img">
-              <img src="images/img.png" alt="" />
-            </div>
-          </div>
-        </section>
 
-        <!-- about section -->
-        <section class="section about">
-          <div class="img-wrapper">
-            <div class="img-box about-img">
-              <img src="images/img.png" alt="" />
-            </div>
-          </div>
+        </div>
+      </section>
 
-          <div class="about-info">
-            <h2 class="title">About Me</h2>
-            <h3>Fontend Developer!</h3>
-            <p class="desc">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio dicta quibusdam nesciunt illo
-              suscipit doloremque, facere corporis eligendi tenetur error dolor et maiores quisquam cupiditate non
-              molestiae soluta! Numquam, unde?
-            </p>
-            <a href="https://www.youkewang.top" target="_blank" class="btn">View More</a>
-          </div>
-        </section>
+      <!-- JavaScript 檔案腳本 -->
+      <script src="script.js"></script>
+</body>
 
-        <!-- resume (experience, skills, education) section -->
-        <section class="section resume">
-          <h2 class="title">Resume</h2>
-          <div class="tab-box">
-            <div class="tab-list resume-list">
-              <h3>Experience</h3>
-            </div>
-            <div class="tab-list resume-list">
-              <h3>Skills</h3>
-            </div>
-            <div class="tab-list resume-list active">
-              <h3>Education</h3>
-            </div>
-          </div>
-
-          <div class="tab-wrapper">
-            <div class="tab-grid resume-box experience">
-              <div class="tab-item resume-item">
-                <h4>2022 - Present</h4>
-                <h4>Frontend Developer</h4>
-                <h4>Google</h4>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi quo ab voluptatibus earum sapiente fuga
-                  eos, facilis doloribus ea saepe!
-                </p>
-              </div>
-
-              <div class="tab-item resume-item">
-                <h4>2021 - 2022</h4>
-                <h4>Full Stack Developer</h4>
-                <h4>YouTube</h4>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi quo ab voluptatibus earum sapiente fuga
-                  eos, facilis doloribus ea saepe!
-                </p>
-              </div>
-
-              <div class="tab-item resume-item">
-                <h4>2020 - 2021</h4>
-                <h4>Backend Developer</h4>
-                <h4>Appele Inc.</h4>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi quo ab voluptatibus earum sapiente fuga
-                  eos, facilis doloribus ea saepe!
-                </p>
-              </div>
-
-              <div class="tab-item resume-item">
-                <h4>2019 - 2020</h4>
-                <h4>Frontend Developer Intern</h4>
-                <h4>Amazon.com Inc.</h4>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi quo ab voluptatibus earum sapiente fuga
-                  eos, facilis doloribus ea saepe!
-                </p>
-              </div>
-
-              <div class="tab-item resume-item">
-                <h4>2018 - 2019</h4>
-                <h4>UI/UX Designer</h4>
-                <h4>Microsoft Corp.</h4>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi quo ab voluptatibus earum sapiente fuga
-                  eos, facilis doloribus ea saepe!
-                </p>
-              </div>
-
-              <div class="tab-item resume-item">
-                <h4>2017 - 2018</h4>
-                <h4>Junior Developer</h4>
-                <h4>Chevron Corp.</h4>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi quo ab voluptatibus earum sapiente fuga
-                  eos, facilis doloribus ea saepe!
-                </p>
-              </div>
-            </div>
-
-            <div class="tab-grid resume-box skills">
-              <div class="tab-item resume-item">
-                <i class="bx bxl-html5"></i>
-                <p>HTML5</p>
-              </div>
-              <div class="tab-item resume-item">
-                <i class="bx bxl-css3"></i>
-                <p>CSS</p>
-              </div>
-              <div class="tab-item resume-item">
-                <i class="bx bxl-javascript"></i>
-                <p>JavaScript</p>
-              </div>
-              <div class="tab-item resume-item">
-                <i class="bx bxl-react"></i>
-                <p>React.js</p>
-              </div>
-              <div class="tab-item resume-item">
-                <i class="bx bxl-tailwind-css"></i>
-                <p>Tailwind.css</p>
-              </div>
-              <div class="tab-item resume-item">
-                <i class="bx bxl-bootstrap"></i>
-                <p>BootStrap</p>
-              </div>
-              <div class="tab-item resume-item">
-                <i class="bx bxl-angular"></i>
-                <p>Angular</p>
-              </div>
-              <div class="tab-item resume-item">
-                <i class="bx bxl-vuejs"></i>
-                <p>Vue.js</p>
-              </div>
-              <div class="tab-item resume-item">
-                <i class="bx bxl-nodejs"></i>
-                <p>Node.js</p>
-              </div>
-              <div class="tab-item resume-item">
-                <i class="bx bxl-java"></i>
-                <p>Java</p>
-              </div>
-              <div class="tab-item resume-item">
-                <i class="bx bxl-php"></i>
-                <p>PHP</p>
-              </div>
-              <div class="tab-item resume-item">
-                <i class="bx bxl-python"></i>
-                <p>Python</p>
-              </div>
-              <div class="tab-item resume-item">
-                <i class="bx bxl-django"></i>
-                <p>Django</p>
-              </div>
-              <div class="tab-item resume-item">
-                <i class="bx bxl-flask"></i>
-                <p>Flask</p>
-              </div>
-              <div class="tab-item resume-item">
-                <i class="bx bxl-mongodb"></i>
-                <p>MongoDB</p>
-              </div>
-              <div class="tab-item resume-item">
-                <i class="bx bxl-postgresql"></i>
-                <p>PostgreSQL</p>
-              </div>
-              <div class="tab-item resume-item">
-                <i class="bx bxl-sketch"></i>
-                <p>Sketch</p>
-              </div>
-              <div class="tab-item resume-item">
-                <i class="bx bxl-figma"></i>
-                <p>Figma</p>
-              </div>
-            </div>
-
-            <div class="tab-grid resume-box education active">
-              <div class="tab-item resume-item">
-                <h4>2024</h4>
-                <h4>Programming Course</h4>
-                <h4>Online Course</h4>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita reprehenderit asperiores quae
-                  minima, cumque facere molestiae? Numquam, facilis recusandae, quidem odio nesciunt veritatis cum minus
-                  sunt, consequuntur illum repellendus id!
-                </p>
-              </div>
-
-              <div class="tab-item resume-item">
-                <h4>2022 - 2023</h4>
-                <h4>Web Development Bootcamp</h4>
-                <h4>Online Course Platform</h4>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita reprehenderit asperiores quae
-                  minima, cumque facere molestiae? Numquam, facilis recusandae, quidem odio nesciunt veritatis cum minus
-                  sunt, consequuntur illum repellendus id!
-                </p>
-              </div>
-
-              <div class="tab-item resume-item">
-                <h4>2020</h4>
-                <h4>Certified Web Development</h4>
-                <h4>Online Course</h4>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita reprehenderit asperiores quae
-                  minima, cumque facere molestiae? Numquam, facilis recusandae, quidem odio nesciunt veritatis cum minus
-                  sunt, consequuntur illum repellendus id!
-                </p>
-              </div>
-
-              <div class="tab-item resume-item">
-                <h4>2017 - 2018</h4>
-                <h4>Doctor of Engineering</h4>
-                <h4>University of Cambridge</h4>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita reprehenderit asperiores quae
-                  minima, cumque facere molestiae? Numquam, facilis recusandae, quidem odio nesciunt veritatis cum minus
-                  sunt, consequuntur illum repellendus id!
-                </p>
-              </div>
-
-              <div class="tab-item resume-item">
-                <h4>2015 - 2017</h4>
-                <h4>Master of Computer Science</h4>
-                <h4>University of Cambridge</h4>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita reprehenderit asperiores quae
-                  minima, cumque facere molestiae? Numquam, facilis recusandae, quidem odio nesciunt veritatis cum minus
-                  sunt, consequuntur illum repellendus id!
-                </p>
-              </div>
-
-              <div class="tab-item resume-item">
-                <h4>2012 - 2015</h4>
-                <h4>Bachelor of Data Science</h4>
-                <h4>University of Cambridge</h4>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita reprehenderit asperiores quae
-                  minima, cumque facere molestiae? Numquam, facilis recusandae, quidem odio nesciunt veritatis cum minus
-                  sunt, consequuntur illum repellendus id!
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- portfolio (work, service) section -->
-        <section class="section portfolio">
-          <h2 class="title">Portfolio</h2>
-          <div class="tab-box">
-            <div class="tab-list portfolio-list"><h3>My Work</h3></div>
-            <div class="tab-list portfolio-list active"><h3>My Service</h3></div>
-          </div>
-
-          <div class="tab-wrapper">
-            <div class="tab-grid portfolio-box work">
-              <div class="tab-item portfolio-item">
-                <div class="work-img">
-                  <img src="images/work1.jpg" alt="" />
-                </div>
-                <div class="work-info">
-                  <h4>Frontend Project</h4>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, mollitia.</p>
-                  <div class="tech-used">
-                    <p>HTML5, CSS3, JavaScript</p>
-                  </div>
-                  <div class="portfolio-icon work-icon">
-                    <a href="#">
-                      <i class="bx bx-arrow-back"></i>
-                      <span class="tooltip">Preview</span>
-                    </a>
-                    <a href="#">
-                      <i class="bx bxl-github"></i>
-                      <span class="tooltip">Github Repository</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="tab-item portfolio-item">
-                <div class="work-img">
-                  <img src="images/work2.jpg" alt="" />
-                </div>
-                <div class="work-info">
-                  <h4>Frontend Project</h4>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, mollitia.</p>
-                  <div class="tech-used">
-                    <p>HTML5, CSS3, JavaScript</p>
-                  </div>
-                  <div class="portfolio-icon work-icon">
-                    <a href="#">
-                      <i class="bx bx-arrow-back"></i>
-                      <span class="tooltip">Preview</span>
-                    </a>
-                    <a href="#">
-                      <i class="bx bxl-github"></i>
-                      <span class="tooltip">Github Repository</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="tab-item portfolio-item">
-                <div class="work-img">
-                  <img src="images/work3.jpg" alt="" />
-                </div>
-                <div class="work-info">
-                  <h4>Frontend Project</h4>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, mollitia.</p>
-                  <div class="tech-used">
-                    <p>HTML5, CSS3, JavaScript</p>
-                  </div>
-                  <div class="portfolio-icon work-icon">
-                    <a href="#">
-                      <i class="bx bx-arrow-back"></i>
-                      <span class="tooltip">Preview</span>
-                    </a>
-                    <a href="#">
-                      <i class="bx bxl-github"></i>
-                      <span class="tooltip">Github Repository</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="tab-item portfolio-item">
-                <div class="work-img">
-                  <img src="images/work4.jpg" alt="" />
-                </div>
-                <div class="work-info">
-                  <h4>Frontend Project</h4>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, mollitia.</p>
-                  <div class="tech-used">
-                    <p>HTML5, CSS3, JavaScript</p>
-                  </div>
-                  <div class="portfolio-icon work-icon">
-                    <a href="#">
-                      <i class="bx bx-arrow-back"></i>
-                      <span class="tooltip">Preview</span>
-                    </a>
-                    <a href="#">
-                      <i class="bx bxl-github"></i>
-                      <span class="tooltip">Github Repository</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="tab-item portfolio-item">
-                <div class="work-img">
-                  <img src="images/work5.jpg" alt="" />
-                </div>
-                <div class="work-info">
-                  <h4>Frontend Project</h4>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, mollitia.</p>
-                  <div class="tech-used">
-                    <p>HTML5, CSS3, JavaScript</p>
-                  </div>
-                  <div class="portfolio-icon work-icon">
-                    <a href="#">
-                      <i class="bx bx-arrow-back"></i>
-                      <span class="tooltip">Preview</span>
-                    </a>
-                    <a href="#">
-                      <i class="bx bxl-github"></i>
-                      <span class="tooltip">Github Repository</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="tab-item portfolio-item">
-                <div class="work-img">
-                  <img src="images/work6.jpg" alt="" />
-                </div>
-                <div class="work-info">
-                  <h4>Frontend Project</h4>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, mollitia.</p>
-                  <div class="tech-used">
-                    <p>HTML5, CSS3, JavaScript</p>
-                  </div>
-                  <div class="portfolio-icon work-icon">
-                    <a href="#">
-                      <i class="bx bx-arrow-back"></i>
-                      <span class="tooltip">Preview</span>
-                    </a>
-                    <a href="#">
-                      <i class="bx bxl-github"></i>
-                      <span class="tooltip">Github Repository</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="tab-grid portfolio-box service active">
-              <div class="tab-item portfolio-item">
-                <div class="portfolio-icon service-icon">
-                  <i class="bx bx-code-alt icon"></i>
-                  <a href="#"><i class="bx bx-arrow-back"></i></a>
-                </div>
-                <h4>Wev Developer</h4>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium, iste?</p>
-              </div>
-
-              <div class="tab-item portfolio-item">
-                <div class="portfolio-icon service-icon">
-                  <i class="bx bx-palette icon"></i>
-                  <a href="#"><i class="bx bx-arrow-back"></i></a>
-                </div>
-                <h4>Wev Developer</h4>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium, iste?</p>
-              </div>
-
-              <div class="tab-item portfolio-item">
-                <div class="portfolio-icon service-icon">
-                  <i class="bx bx-palette icon"></i>
-                  <a href="#"><i class="bx bx-arrow-back"></i></a>
-                </div>
-                <h4>Wev Developer</h4>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium, iste?</p>
-              </div>
-
-              <div class="tab-item portfolio-item">
-                <div class="portfolio-icon service-icon">
-                  <i class="bx bx-palette icon"></i>
-                  <a href="#"><i class="bx bx-arrow-back"></i></a>
-                </div>
-                <h4>Wev Developer</h4>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium, iste?</p>
-              </div>
-
-              <div class="tab-item portfolio-item">
-                <div class="portfolio-icon service-icon">
-                  <i class="bx bx-palette icon"></i>
-                  <a href="#"><i class="bx bx-arrow-back"></i></a>
-                </div>
-                <h4>Wev Developer</h4>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium, iste?</p>
-              </div>
-
-              <div class="tab-item portfolio-item">
-                <div class="portfolio-icon service-icon">
-                  <i class="bx bx-camera icon"></i>
-                  <a href="#"><i class="bx bx-arrow-back"></i></a>
-                </div>
-                <h4>Wev Developer</h4>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium, iste?</p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- contact section -->
-        <section class="section contact active">
-          <h2 class="title">Contact</h2>
-          <div class="contact-wrapper">
-            <form action="#" class="contact-form">
-              <h3>Let's Work Together!</h3>
-              <div class="field-box">
-                <input type="text" placeholder="Full Name" required />
-                <input type="email" placeholder="Email Address" required />
-                <input type="number" placeholder="Phone Number" required />
-                <input type="text" placeholder="Email Subject" required />
-                <textarea name="" id="" placeholder="Your Message" required></textarea>
-              </div>
-              <div class="contact-btn">
-                <button type="submit" class="btn">Send Message</button>
-              </div>
-            </form>
-          </div>
-        </section>
-      </div>
-    </div>
-
-    <!-- JavaScript file script -->
-    <script src="script.js"></script>
-  </body>
 </html>
