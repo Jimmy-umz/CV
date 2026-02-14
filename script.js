@@ -85,7 +85,7 @@ setTimeout(() => {
 // 技能進度條動畫初始化
 function initSkillProgressBars() {
   const skillBars = document.querySelectorAll('.skill-progress-bar');
-  
+
   skillBars.forEach(bar => {
     // 獲取寬度百分比
     const width = bar.style.width;
@@ -132,7 +132,7 @@ resumeLists.forEach((list, idx) => {
       allBars.forEach(bar => {
         bar.style.width = '0%';
       });
-      
+
       // 延遲觸發動畫
       setTimeout(() => {
         const activeBars = document.querySelectorAll('.resume-box.skills.active .skill-progress-bar');
