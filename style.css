@@ -1376,189 +1376,166 @@ section:nth-child(even) {
   /* 背景顏色變深藍色 */
 }
 
-/* ===== 職業規劃獨立頁面樣式 ===== */
-.section.career {
-  padding: 2rem 10% 28rem 10%;
-  overflow-y: auto;
-}
 
-/* 第2個面的3D位置（因為職業規劃是索引1） */
-.section.career {
-  transform: translateX(50vw) translateZ(-50vw) rotateY(90deg);
-}
 
-/* 職業規劃內容網格 */
-.career-content {
+
+/* 能力證明樣式 */
+.certificate {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
   gap: 2rem;
-  margin-top: 2rem;
+  padding: 1rem 0;
 }
 
-/* 卡片樣式 */
-.career-card {
+.certificate-item {
   background: var(--third-bg-color);
-  border-radius: 2rem;
-  padding: 2.5rem;
-  transition: 0.3s;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.career-card:hover {
-  transform: translateY(-0.5rem);
-  box-shadow: 0 1rem 3rem rgba(0, 238, 255, 0.2);
-  border-color: var(--main-color);
-}
-
-.card-icon {
-  width: 5rem;
-  height: 5rem;
-  background: rgba(0, 238, 255, 0.1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-}
-
-.card-icon i {
-  font-size: 2.8rem;
-  color: var(--main-color);
-}
-
-.career-card h3 {
-  font-size: 2.4rem;
-  color: var(--main-color);
-  margin-bottom: 1.5rem;
-}
-
-.career-goal-text {
-  font-size: 1.6rem;
-  line-height: 1.8;
-  color: #ddd;
-}
-
-.highlight {
-  color: var(--main-color);
-  font-weight: 600;
-}
-
-/* 步驟列表 */
-.step-list {
-  list-style: none;
-}
-
-.step-list li {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-size: 1.5rem;
-  margin-bottom: 1.2rem;
-  color: #ddd;
-}
-
-.step-list li i {
-  color: var(--main-color);
-  font-size: 2rem;
-}
-
-/* 技能學習計劃 */
-.skill-plan {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-
-.plan-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
   border-radius: 1rem;
-  font-size: 1.4rem;
-}
-
-.plan-skill {
-  font-weight: 600;
-  color: var(--white-color);
-}
-
-.plan-method {
-  color: var(--main-color);
-}
-
-.plan-date {
-  padding: 0.3rem 1rem;
-  background: var(--main-color);
-  color: var(--bg-color);
-  border-radius: 2rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-/* 時間線 */
-.timeline {
+  padding: 2.5rem;
+  display: flex;
+  gap: 2rem;
+  transition: transform 0.3s, box-shadow 0.3s;
   position: relative;
-  padding-left: 2rem;
+  overflow: hidden;
 }
 
-.timeline::before {
+.certificate-item::before {
   content: '';
   position: absolute;
-  left: 0.7rem;
   top: 0;
-  width: 0.2rem;
+  left: 0;
+  width: 0.4rem;
   height: 100%;
   background: var(--main-color);
-  opacity: 0.3;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
-.timeline-item {
-  position: relative;
-  padding-bottom: 2rem;
+.certificate-item:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 1rem 2rem rgba(0, 238, 255, 0.2);
+}
+
+.certificate-item:hover::before {
+  opacity: 1;
+}
+
+.certificate-icon {
+  font-size: 4rem;
+  color: var(--main-color);
+  min-width: 5rem;
   display: flex;
-  align-items: center;
-  gap: 1.5rem;
+  align-items: flex-start;
+  justify-content: center;
 }
 
-.timeline-dot {
-  width: 1.6rem;
-  height: 1.6rem;
-  background: var(--main-color);
-  border-radius: 50%;
-  z-index: 1;
-  box-shadow: 0 0 1rem var(--main-color);
-}
-
-.timeline-content {
+.certificate-content {
   flex: 1;
 }
 
-.timeline-date {
+.certificate-content h4 {
+  font-size: 2rem;
+  color: var(--main-color);
+  margin-bottom: 0.8rem;
+  line-height: 1.3;
+}
+
+.certificate-issuer {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--white-color);
+  margin-bottom: 0.3rem;
+}
+
+.certificate-date {
+  font-size: 1.4rem;
+  color: var(--tab-list-color);
+  margin-bottom: 1rem;
   display: inline-block;
   padding: 0.3rem 1rem;
-  background: rgba(0, 238, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 2rem;
-  font-size: 1.2rem;
+}
+
+.certificate-desc {
+  font-size: 1.5rem;
+  color: #ccc;
+  line-height: 1.6;
+  margin-top: 0.5rem;
+}
+
+.certificate-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.skill-tag {
+  background: rgba(0, 238, 255, 0.15);
   color: var(--main-color);
+  padding: 0.4rem 1.2rem;
+  border-radius: 2rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  border: 1px solid rgba(0, 238, 255, 0.3);
+  transition: 0.3s;
+}
+
+.skill-tag:hover {
+  background: var(--main-color);
+  color: var(--bg-color);
+  border-color: var(--main-color);
+}
+
+.certificate-list {
+  margin-top: 1rem;
+}
+
+.certificate-list p {
+  font-size: 1.5rem;
+  color: #ccc;
   margin-bottom: 0.5rem;
+  padding-left: 1rem;
+  position: relative;
 }
 
-.timeline-content h4 {
-  font-size: 1.6rem;
-  color: var(--white-color);
+.certificate-list p::before {
+  content: '•';
+  color: var(--main-color);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
 }
 
-/* 響應式 */
+
+
+/* 能力證明標籤頁的響應式設計 */
 @media screen and (max-width: 768px) {
-  .career-content {
+  .certificate {
     grid-template-columns: 1fr;
   }
 
-  .plan-item {
+  .certificate-item {
+    padding: 2rem;
+  }
+
+  .certificate-icon {
+    font-size: 3.5rem;
+  }
+
+  .certificate-content h4 {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .certificate-item {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .certificate-icon {
+    justify-content: center;
   }
 }

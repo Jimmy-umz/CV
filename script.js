@@ -124,25 +124,17 @@ document.querySelectorAll('.resume-list').forEach((list, index) => {
 document.addEventListener('DOMContentLoaded', initSkillProgressBars);
 
 // 當切換到技能標籤時觸發動畫
-resumeLists.forEach((list, idx) => {
-  list.addEventListener('click', () => {
-    if (idx === 1) { // 技能標籤索引
-      // 重置所有進度條為 0
-      const allBars = document.querySelectorAll('.skill-progress-bar');
-      allBars.forEach(bar => {
-        bar.style.width = '0%';
-      });
+// 作品集標籤點擊事件：切換作品集內容
+portfolioLists.forEach((list, index) => {
+  list.addEventListener("click", (_) => {
+    // 移除當前啟用的作品集標籤
+    document.querySelector(".portfolio-list.active").classList.remove("active");
+    // 為點擊的作品集標籤添加啟用狀態
+    list.classList.add("active");
 
-      // 延遲觸發動畫
-      setTimeout(() => {
-        const activeBars = document.querySelectorAll('.resume-box.skills.active .skill-progress-bar');
-        activeBars.forEach(bar => {
-          const width = bar.parentElement.style.getPropertyValue('--target-width');
-          if (width) {
-            bar.style.width = width;
-          }
-        });
-      }, 50);
-    }
+    // 移除當前顯示的作品集內容
+    document.querySelector(".portfolio-box.active").classList.remove("active");
+    // 顯示對應索引的作品集內容
+    portfolioBoxs[index].classList.add("active");
   });
 });
