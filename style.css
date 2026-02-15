@@ -1,1193 +1,534 @@
-/* 引入 Google Fonts 的 Poppins 字體 */
+/* 引入 Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
-/* 全域重置樣式 */
+/* 全域重置 */
 * {
   margin: 0;
-  /* 移除外邊距 */
   padding: 0;
-  /* 移除內邊距 */
   box-sizing: border-box;
-  /* 確保盒模型計算包含邊框和內距 */
   text-decoration: none;
-  /* 移除文字裝飾（如下劃線） */
   list-style: none;
-  /* 移除列表樣式（如圓點） */
   border: none;
-  /* 移除邊框 */
   outline: none;
-  /* 移除輪廓線 */
   font-family: "Poppins", sans-serif;
-  /* 設定預設字體 */
 }
 
-/* CSS 自訂屬性（變數）定義 */
+/* CSS 變數 */
 :root {
   --nav-bg-color: rgba(255, 255, 255, 0.1);
-  /* 導航欄背景顏色（半透明白色） */
   --bg-color: #171f2b;
-  /* 主要背景顏色（深藍黑色） */
   --second-bg-color: #1f2733;
-  /* 次要背景顏色（稍淺的深藍黑） */
   --third-bg-color: #2d3542;
-  /* 第三背景顏色（更淺的深藍灰） */
   --main-color: #0ef;
-  /* 主色（青色） */
   --white-color: #fff;
-  /* 白色 */
   --tab-list-color: #7c8594;
-  /* 標籤列表顏色（灰色） */
 }
 
-/* 文字選取時的樣式 */
+/* 選取樣式 */
 ::selection {
   background: var(--main-color);
-  /* 選取背景顏色 */
   color: var(--bg-color);
-  /* 選取文字顏色 */
 }
 
-/* 自訂滾動條樣式 */
+/* 滾動條 */
 ::-webkit-scrollbar {
   width: 0.5rem;
-  /* 滾動條寬度 */
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--main-color);
-  /* 滾動條滑塊顏色 */
   border-radius: 1rem;
-  /* 滾動條滑塊圓角 */
 }
 
-/* 輸入框佔位符樣式 */
-::placeholder {
-  color: var(--white-color);
-  /* 佔位符文字顏色 */
-}
-
-/* 根元素樣式 */
+/* 根元素 */
 html {
   font-size: 62.5%;
-  /* 設定根字體大小為 10px（方便 rem 計算） */
 }
 
-/* 主體樣式 */
 body {
   color: var(--white-color);
-  /* 文字顏色 */
   overflow: hidden;
-  /* 隱藏溢出內容 */
 }
 
-/* 段落樣式 */
 p {
   font-size: 1.6rem;
-  /* 段落字體大小（16px） */
 }
 
-/* 導航欄樣式 */
+/* 導航欄 */
 .nav {
   position: fixed;
-  /* 固定定位 */
   bottom: 2rem;
-  /* 距離底部 2rem */
   left: 50%;
-  /* 水平置中 */
   transform: translateX(-50%);
-  /* 水平置中修正 */
   width: 40rem;
-  /* 導航欄寬度 */
   padding: 2rem 0;
-  /* 上下內距 */
   background: var(--nav-bg-color);
-  /* 背景顏色 */
   border-radius: 5rem;
-  /* 圓角（橢圓形） */
   z-index: 100;
-  /* 層級（確保在最上層） */
   animation: animate-nav 1s ease-in-out backwards;
-  /* 導航欄動畫 */
   animation-delay: 1s;
-  /* 動畫延遲 */
 }
 
-/* 導航欄動畫 */
 @keyframes animate-nav {
   0% {
-    visibility: hidden;
-    /* 隱藏 */
     opacity: 0;
-    /* 完全透明 */
   }
 
   100% {
-    visibility: visible;
-    /* 顯示 */
     opacity: 1;
-    /* 完全不透明 */
   }
 }
 
-/* 導航列表樣式 */
 .nav .nav-list {
   display: flex;
-  /* 彈性佈局 */
   justify-content: space-evenly;
-  /* 均勻分佈項目 */
 }
 
 .nav-list li {
   position: relative;
-  /* 相對定位（用於 tooltip 定位） */
   display: flex;
-  /* 彈性佈局 */
   font-size: 3rem;
-  /* 圖標大小 */
   cursor: pointer;
-  /* 鼠標懸停時變為手指圖標 */
   transition: 0.3s;
-  /* 過渡動畫 */
 }
 
 .nav-list li:hover,
 .nav-list li.active {
   color: var(--main-color);
-  /* 懸停或啟用時變為主色 */
 }
 
-/* 工具提示樣式 */
+/* 工具提示 */
 .tooltip {
   position: absolute;
-  /* 絕對定位 */
   top: -4rem;
-  /* 向上偏移 4rem */
   left: 50%;
-  /* 水平置中 */
   transform: translateX(-50%);
-  /* 水平置中修正 */
   padding: 0.3rem 1rem;
-  /* 內距 */
   background: var(--main-color);
-  /* 背景顏色 */
   border-radius: 0.4rem;
-  /* 圓角 */
   font-size: 1.6rem;
-  /* 字體大小 */
   color: var(--bg-color);
-  /* 文字顏色 */
   font-weight: 500;
-  /* 字體粗細 */
   white-space: nowrap;
-  /* 禁止換行 */
   visibility: hidden;
-  /* 隱藏 */
   opacity: 0;
-  /* 透明 */
   transition: 0.3s;
-  /* 過渡動畫 */
 }
 
-/* 工具提示顯示條件 */
 .nav-list li:hover .tooltip,
 a:hover .tooltip,
 .portfolio-item:hover .work-info {
   visibility: visible;
-  /* 顯示 */
   opacity: 1;
-  /* 不透明 */
 }
 
-
-
-
-
-
-
-
-/* 3D 容器樣式 */
+/* 3D 容器 */
 .container {
   width: 100vw;
-  /* 視窗寬度 */
   height: 100vh;
-  /* 視窗高度 */
   perspective: 1500px;
-  /* 3D 透視距離 */
   perspective-origin: 50%;
-  /* 透視原點置中 */
 }
 
-/* 3D 立方體樣式 */
+/* 3D 立方體 */
 .box {
   position: relative;
-  /* 相對定位 */
   width: 100%;
-  /* 寬度 100% */
   height: 100%;
-  /* 高度 100% */
   transform-style: preserve-3d;
-  /* 保持 3D 變換 */
   transform-origin: 50% 50% -50vw;
-  /* 變換原點（創建立方體效果） */
   transform: rotateY(0deg);
-  /* 初始旋轉角度 */
   transition: 2s;
-  /* 過渡動畫時間 */
   animation: animate-cube 3s ease-in-out backwards;
-  /* 立方體載入動畫 */
 }
 
-/* 立方體載入動畫 */
 @keyframes animate-cube {
   0% {
     transform: scale(0) rotateY(-360deg);
-    /* 從縮小 0 並旋轉開始 */
   }
 
   100% {
     transform: scale(1) rotateY(0deg);
-    /* 恢復正常大小和角度 */
   }
 }
 
-
-
-
-
-
-
-/* 區段（立方體面）基本樣式 */
+/* 區段基本樣式 */
 .section {
   position: absolute;
-  /* 絕對定位（形成立方體的面） */
   width: 100%;
-  /* 寬度 100% */
   height: 100%;
-  /* 高度 100% */
   background: var(--bg-color);
-  /* 背景顏色 */
   padding: 0 10%;
-  /* 左右內距 */
   backface-visibility: hidden;
-  /* 隱藏背面（3D 效果） */
 }
 
-/* 偶數區段背景顏色 */
 section:nth-child(even) {
   background: var(--second-bg-color);
-  /* 使用次要背景顏色 */
 }
 
-/* About 區段 3D 位置 */
+/* 3D 位置 */
 .section.about {
   transform: translateX(50vw) translateZ(-50vw) rotateY(90deg);
-  /* 右側面 */
 }
 
-/* Resume 區段 3D 位置 */
 .section.resume {
   transform: translateZ(-100vw) rotateY(-180deg);
-  /* 背面 */
   transform-origin: 50%;
-  /* 變換原點置中 */
 }
 
-/* Portfolio 區段 3D 位置 */
 .section.portfolio {
   transform: translateX(-50vw) translateZ(-50vw) rotateY(-90deg);
-  /* 左側面 */
 }
 
-/* Contact 區段初始狀態 */
-.section.contact {
-  visibility: hidden;
-  /* 隱藏 */
-  transition-delay: 0.5s;
-  /* 過渡延遲 */
-}
-
-/* Contact 區段啟用狀態 */
-.section.contact.active {
-  visibility: visible;
-  /* 顯示 */
-}
-
-/* Contact 區段特殊狀態（當從其他面切換時） */
-.section.contact.action-contact {
-  transition-delay: 1.5s;
-  /* 延遲更久 */
-}
-
-.section.contact.action-contact.active {
-  transition-delay: 0s;
-  /* 取消延遲 */
-}
-
-/* Home 和 About 區段佈局 */
-.home,
-.about {
+/* Home 和 About 佈局 */
+.home {
   display: flex;
-  /* 彈性佈局 */
   align-items: center;
-  /* 垂直置中 */
   gap: 5rem;
-  /* 項目間距 */
 }
 
 .home-info h1 {
   font-size: 5.5rem;
-  /* 大標題字體大小 */
   color: var(--main-color);
-  /* 主色 */
   line-height: 1;
-  /* 行高 */
 }
 
 .home-info h3 {
   font-size: 3rem;
-  /* 次標題字體大小 */
-}
-
-.desc {
-  margin: 1rem 0 2rem;
-  /* 上下外距 */
 }
 
 .home-info .btn-sci {
   display: flex;
-  /* 彈性佈局 */
   align-items: center;
-  /* 垂直置中 */
-}
-
-.btn {
-  display: inline-flex;
-  /* 行內彈性佈局 */
-  padding: 1.2rem 3rem;
-  /* 內距 */
-  background: var(--main-color);
-  /* 背景顏色 */
-  border-radius: 5rem;
-  /* 圓角（橢圓形） */
-  box-shadow: 0 0 1rem var(--main-color);
-  /* 陰影 */
-  font-size: 1.6rem;
-  /* 字體大小 */
-  color: var(--bg-color);
-  /* 文字顏色 */
-  font-weight: 600;
-  /* 字體粗細 */
-  transition: 0.3s;
-  /* 過渡動畫 */
-}
-
-.btn:hover {
-  box-shadow: none;
-  /* 懸停時移除陰影 */
 }
 
 .home-info .btn-sci .sci {
   margin-left: 2rem;
-  /* 左邊距 */
 }
 
 .home-info .btn-sci .sci a {
   position: relative;
-  /* 相對定位（用於 tooltip） */
   display: inline-flex;
-  /* 行內彈性佈局 */
   padding: 0.8rem;
-  /* 內距 */
   border: 0.2rem solid var(--main-color);
-  /* 邊框 */
   border-radius: 50%;
-  /* 圓形 */
   font-size: 2rem;
-  /* 圖標大小 */
   color: var(--main-color);
-  /* 圖標顏色 */
   margin: 0 0.8rem;
-  /* 左右邊距 */
   transition: 0.3s;
-  /* 過渡動畫 */
 }
 
 .home-info .btn-sci .sci a:hover {
   background: var(--main-color);
-  /* 懸停時背景變為主色 */
   color: var(--bg-color);
-  /* 懸停時文字變為背景色 */
 }
 
-/* 圖片容器樣式 */
+/* 圖片容器 */
 .img-box {
   position: relative;
-  /* 相對定位 */
   width: 32vw;
-  /* 寬度為視窗寬度的 32% */
   height: 32vw;
-  /* 高度與寬度相同（正方形） */
   background: linear-gradient(var(--bg-color), var(--main-color));
-  /* 漸變背景 */
   border-radius: 50%;
-  /* 圓形 */
   border: 0.5rem solid var(--main-color);
-  /* 邊框 */
   box-shadow: 0 0 2rem var(--main-color);
-  /* 陰影 */
   display: flex;
-  /* 彈性佈局 */
   justify-content: center;
-  /* 水平置中 */
   overflow: hidden;
-  /* 隱藏溢出內容 */
   transition: 1s;
-  /* 過渡動畫 */
 }
 
 .img-box.home-img:hover {
   box-shadow: 0 0 8rem var(--main-color);
-  /* 懸停時增大陰影 */
 }
 
 .img-box img {
   display: block;
-  /* 區塊顯示 */
   position: absolute;
-  /* 絕對定位 */
   top: 3rem;
-  /* 向下偏移 */
   width: 90%;
-  /* 寬度 85% */
   object-fit: cover;
-  /* 圖片填充方式 */
 }
 
-.img-box.about-img {
-  background: transparent;
-  /* 透明背景 */
-  box-shadow: 0 0 2rem var(--main-color), inset 0 0 1rem var(--main-color);
-  /* 外陰影和內陰影 */
-}
-
-.img-box.about-img img {
-  z-index: -1;
-  /* 降低圖層（置於背景後） */
-}
-
-/* 標題樣式 */
+/* 標題 */
 .title {
   font-size: 4rem;
-  /* 字體大小 */
   text-align: center;
-  /* 文字置中 */
 }
 
-.about-info .title {
-  text-align: left;
-  /* 左對齊 */
-}
-
-.about-info h3 {
-  font-size: 2.5rem;
-  /* 字體大小 */
-  color: var(--main-color);
-  /* 主色 */
-  margin-top: -1rem;
-  /* 負上邊距（與標題重疊） */
-}
-
-.about-info .btn {
-  padding: 1.2rem 4rem;
-  /* 按鈕內距 */
-}
-
-/* Resume 和 Portfolio 區段內距 */
+/* Resume 和 Portfolio 區段 */
 .resume,
 .portfolio {
   padding-top: 2rem;
-  /* 上內距 */
   padding-bottom: 28rem;
-  /* 下內距（為了滾動空間） */
 }
 
-/* 標籤容器樣式 */
+/* 標籤容器 */
 .tab-box {
   display: flex;
-  /* 彈性佈局 */
   width: 100%;
-  /* 寬度 100% */
   height: 5rem;
-  /* 高度 */
   margin-top: 1rem;
-  /* 上邊距 */
   margin-bottom: 2rem;
-  /* 下邊距 */
 }
 
 .tab-list {
   display: flex;
-  /* 彈性佈局 */
   align-items: center;
-  /* 垂直置中 */
   width: 100%;
-  /* 寬度 100% */
   cursor: pointer;
-  /* 鼠標懸停手指圖標 */
   border-bottom: 0.3rem solid var(--tab-list-color);
-  /* 底部邊框 */
   color: var(--tab-list-color);
-  /* 文字顏色 */
   transition: 0.3s;
-  /* 過渡動畫 */
 }
 
-/* 啟用的標籤樣式 */
 .tab-list.resume-list.active,
 .tab-list.portfolio-list.active {
   border-color: var(--main-color);
-  /* 邊框顏色變為主色 */
   color: var(--main-color);
-  /* 文字顏色變為主色 */
 }
 
-/* Resume 標籤的特殊對齊 */
 .resume-list:nth-child(2) {
   justify-content: center;
-  /* 水平置中 */
 }
 
 .resume-list:nth-child(3) {
   justify-content: flex-end;
-  /* 水平靠右 */
 }
 
 .tab-list h3 {
   font-size: 2.5rem;
-  /* 標籤文字大小 */
 }
 
-/* 標籤內容容器 */
 .tab-wrapper {
   position: relative;
-  /* 相對定位 */
   width: 100%;
-  /* 寬度 100% */
   height: 100%;
-  /* 高度 100% */
 }
 
-/* 標籤內容網格佈局 */
 .tab-grid {
   position: absolute;
-  /* 絕對定位（所有標籤內容重疊） */
   width: 100%;
-  /* 寬度 100% */
   height: 100%;
-  /* 高度 100% */
   display: grid;
-  /* 網格佈局 */
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-  /* 自適應列 */
   gap: 2rem;
-  /* 網格間距 */
   overflow-x: hidden;
-  /* 隱藏水平溢出 */
   overflow-y: auto;
-  /* 垂直滾動 */
   visibility: hidden;
-  /* 隱藏 */
   opacity: 0;
-  /* 透明 */
   transform: scale(0.8);
-  /* 縮小 */
 }
 
-/* 啟用的標籤內容樣式 */
 .tab-grid.resume-box.active,
 .tab-grid.portfolio-box.active {
   visibility: visible;
-  /* 顯示 */
   opacity: 1;
-  /* 不透明 */
   transform: scale(1);
-  /* 恢復正常大小 */
   transition: 0.3s;
-  /* 過渡動畫 */
 }
 
-/* 標籤項目樣式 */
 .tab-item {
   display: flex;
-  /* 彈性佈局 */
   flex-direction: column;
-  /* 垂直排列 */
   justify-content: center;
-  /* 垂直置中 */
   background: var(--third-bg-color);
-  /* 背景顏色 */
   border-radius: 0.8rem;
-  /* 圓角 */
   padding: 2rem;
-  /* 內距 */
 }
 
 .tab-item h4 {
   font-size: 2.3rem;
-  /* 標題字體大小 */
 }
 
-/* Resume 項目的特殊樣式 */
 .resume-item h4:nth-child(1),
 .resume-item h4:nth-child(3) {
   font-size: 1.7rem;
-  /* 較小字體 */
   color: var(--main-color);
-  /* 主色 */
   font-weight: 400;
-  /* 正常字重 */
 }
 
 .resume-item h4:nth-child(3) {
   position: relative;
-  /* 相對定位（用於裝飾點） */
   color: var(--white-color);
-  /* 白色文字 */
   margin-left: 2rem;
-  /* 左邊距 */
 }
 
-/* 時間軸點裝飾 */
 .resume-item h4:nth-child(3)::before {
   content: "";
-  /* 偽元素內容 */
   position: absolute;
-  /* 絕對定位 */
   left: -2rem;
-  /* 向左偏移 */
   top: 50%;
-  /* 垂直置中 */
   transform: translateY(-50%);
-  /* 垂直置中修正 */
   width: 1rem;
-  /* 寬度 */
   height: 1rem;
-  /* 高度 */
   background: var(--main-color);
-  /* 主色 */
   border-radius: 50%;
-  /* 圓形 */
 }
 
 .tab-item p {
   margin-top: 1rem;
-  /* 段落上邊距 */
 }
 
-/* Skills 標籤的特殊網格 */
+/* Skills 特殊樣式 */
 .resume-box.skills {
   grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-  /* 更多列 */
 }
 
 .resume-box.skills .resume-item {
   align-items: center;
-  /* 水平置中 */
 }
 
 .resume-box.skills .resume-item i {
   font-size: 8rem;
-  /* 技能圖標大小 */
   transition: 0.3s;
-  /* 過渡動畫 */
 }
 
 .resume-box.skills .resume-item:hover i {
   color: var(--main-color);
-  /* 懸停時變為主色 */
 }
 
-.resume-box.skills .resume-item p {
-  margin-top: 0;
-  /* 移除上邊距 */
-}
-
-/* Portfolio 標籤的特殊對齊 */
+/* Portfolio */
 .portfolio-list:nth-child(2) {
   justify-content: flex-end;
-  /* 水平靠右 */
 }
 
-/* 作品項目樣式 */
 .portfolio-box.work .portfolio-item {
   position: relative;
-  /* 相對定位 */
 }
 
-/* 作品項目的覆蓋層 */
 .portfolio-box.work .portfolio-item::before {
   content: "";
-  /* 偽元素內容 */
   position: absolute;
-  /* 絕對定位 */
   left: 0;
-  /* 左對齊 */
   top: 0;
-  /* 頂對齊 */
   width: 100%;
-  /* 寬度 100% */
   height: 100%;
-  /* 高度 100% */
   background: var(--third-bg-color);
-  /* 背景顏色 */
   border-radius: 0.8rem;
-  /* 圓角 */
   z-index: 1;
-  /* 圖層（在圖片上方，文字下方） */
   opacity: 0;
-  /* 透明 */
   transition: 0.3s;
-  /* 過渡動畫 */
 }
 
-/* 懸停時顯示覆蓋層 */
 .portfolio-box.work .portfolio-item:hover::before {
   opacity: 0.9;
-  /* 幾乎不透明 */
 }
 
-/* 作品圖片容器 */
 .portfolio-item .work-img {
   position: absolute;
-  /* 絕對定位 */
   left: 0;
-  /* 左對齊 */
   top: 0;
-  /* 頂對齊 */
   width: 100%;
-  /* 寬度 100% */
   height: 100%;
-  /* 高度 100% */
   border-radius: 0.8rem;
-  /* 圓角 */
   overflow: hidden;
-  /* 隱藏溢出 */
 }
 
 .portfolio-item .work-img img {
   display: block;
-  /* 區塊顯示 */
   width: 100%;
-  /* 寬度 100% */
   height: 100%;
-  /* 高度 100% */
   object-fit: cover;
-  /* 圖片填充方式 */
   transition: 0.3s;
-  /* 過渡動畫 */
 }
 
-/* 懸停時放大圖片 */
 .portfolio-item:hover .work-img img {
   transform: scale(1.2);
-  /* 放大 1.2 倍 */
 }
 
-/* 作品資訊（懸停時顯示） */
 .portfolio-item .work-info {
   z-index: 1;
-  /* 圖層（在覆蓋層上方） */
   visibility: hidden;
-  /* 隱藏 */
   opacity: 0;
-  /* 透明 */
   transition: 0.3s;
-  /* 過渡動畫 */
-}
-
-.portfolio-item .work-info h4 {
-  line-height: 1;
-  /* 行高 */
 }
 
 .portfolio-item .work-info .tech-used {
   color: var(--main-color);
-  /* 主色 */
   border-bottom: 0.1rem solid var(--white-color);
-  /* 底部邊框 */
   padding-bottom: 1rem;
-  /* 底部內距 */
   margin-bottom: 1rem;
-  /* 底部邊距 */
 }
 
-/* 作品圖標樣式 */
 .portfolio-item .portfolio-icon a {
   position: relative;
-  /* 相對定位（用於 tooltip） */
   display: inline-flex;
-  /* 行內彈性佈局 */
   padding: 1rem;
-  /* 內距 */
   background: var(--white-color);
-  /* 背景顏色 */
   border-radius: 50%;
-  /* 圓形 */
   font-size: 2.5rem;
-  /* 圖標大小 */
   color: var(--bg-color);
-  /* 圖標顏色 */
   transition: 0.3s;
-  /* 過渡動畫 */
 }
 
 .portfolio-item .work-icon a:hover {
   background: var(--main-color);
-  /* 懸停時變為主色 */
 }
 
-/* 第一個圖標的間距 */
 .portfolio-item .work-icon a:nth-child(1) {
   margin-right: 1rem;
-  /* 右邊距 */
 }
 
 .portfolio-item .work-icon a:nth-child(1) i {
   transform: rotate(135deg);
-  /* 旋轉箭頭圖標 */
 }
 
-/* 服務項目標題區域 */
-.portfolio-item .service-icon {
-  display: flex;
-  /* 彈性佈局 */
-  justify-content: space-between;
-  /* 兩端對齊 */
-  align-items: center;
-  /* 垂直置中 */
-  margin-bottom: 0.5rem;
-  /* 底部邊距 */
-}
+/* ===== Skills 技能進度條樣式 ===== */
 
-.portfolio-item .service-icon .icon {
-  font-size: 5rem;
-  /* 服務圖標大小 */
-  margin-left: -0.3rem;
-  /* 向左微調 */
-  transition: 0.3s;
-  /* 過渡動畫 */
-}
-
-.portfolio-item:hover .service-icon .icon {
-  color: var(--main-color);
-  /* 懸停時變為主色 */
-}
-
-.portfolio-item:hover .service-icon a {
-  background: var(--main-color);
-  /* 懸停時變為主色 */
-}
-
-.portfolio-item .service-icon a i {
-  transform: rotate(-135deg);
-  /* 旋轉箭頭圖標 */
-  transition: 0.3s;
-  /* 過渡動畫 */
-}
-
-.portfolio-item .service-icon a:hover i {
-  transform: rotate(-180deg);
-  /* 懸停時進一步旋轉 */
-}
-
-/* 服務項目標題懸停效果 */
-.portfolio-box.service .portfolio-item h4 {
-  transition: 0.3s;
-  /* 過渡動畫 */
-}
-
-.portfolio-box.service .portfolio-item:hover h4 {
-  color: var(--main-color);
-  /* 懸停時變為主色 */
-}
-
-/* Contact 區段內距 */
-.contact {
-  padding-top: 2rem;
-  /* 上內距 */
-  padding-bottom: 18rem;
-  /* 下內距 */
-}
-
-/* Contact 容器 */
-.contact-wrapper {
-  display: flex;
-  /* 彈性佈局 */
-  justify-content: center;
-  /* 水平置中 */
-  height: 100%;
-  /* 高度 100% */
-}
-
-/* 聯絡表單樣式 */
-.contact-form {
-  display: flex;
-  /* 彈性佈局 */
-  flex-direction: column;
-  /* 垂直排列 */
-  justify-content: center;
-  /* 垂直置中 */
-  align-items: center;
-  /* 水平置中 */
-  width: 70rem;
-  /* 寬度 */
-}
-
-.contact-form h3 {
-  font-size: 3rem;
-  /* 字體大小 */
-  color: var(--main-color);
-  /* 主色 */
-  margin-bottom: 1rem;
-  /* 底部邊距 */
-}
-
-.contact-form .field-box {
-  display: flex;
-  /* 彈性佈局 */
-  flex-wrap: wrap;
-  /* 允許換行 */
+/* Skills 標籤的網格佈局 */
+.resume-box.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
   gap: 2rem;
-  /* 項目間距 */
+  padding: 1rem 0;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: visibility 0.3s, opacity 0.3s, transform 0.3s;
 }
 
-.contact-form .field-box input,
-.contact-form .field-box textarea {
-  flex: 1 1 30rem;
-  /* 彈性項目（最小寬度 30rem） */
-  padding: 2rem;
-  /* 內距 */
-  background: var(--third-bg-color);
-  /* 背景顏色 */
-  border-radius: 0.6rem;
-  /* 圓角 */
-  font-size: 1.6rem;
-  /* 字體大小 */
-  color: var(--white-color);
-  /* 文字顏色 */
+.resume-box.skills.active {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
 }
 
-.contact-form .field-box textarea {
-  height: 20rem;
-  /* 高度 */
-  resize: none;
-  /* 禁止調整大小 */
-}
-
-.contact-form .contact-btn {
-  margin-top: 2rem;
-  /* 上邊距 */
-}
-
-.contact-form .contact-btn .btn {
-  cursor: pointer;
-  /* 鼠標懸停手指圖標 */
-}
-
-/* 響應式設計 - 斷點 */
-
-/* 大於 1200px 的螢幕 */
-@media screen and (max-width: 1200px) {
-  html {
-    font-size: 55%;
-    /* 調整根字體大小 */
-  }
-}
-
-/* 大於 992px 的螢幕 */
-@media screen and (max-width: 992px) {
-  .section {
-    padding: 0 4%;
-    /* 調整內距 */
-  }
-
-  .resume,
-  .portfolio {
-    padding-top: 1.5rem;
-    /* 調整上內距 */
-    padding-bottom: 27rem;
-    /* 調整下內距 */
-  }
-
-  .contact {
-    padding-top: 1.5rem;
-    /* 調整上內距 */
-    padding-bottom: 18rem;
-    /* 調整下內距 */
-  }
-}
-
-/* 大於 768px 的螢幕 */
-@media screen and (max-width: 768px) {
-  html {
-    font-size: 50%;
-    /* 調整根字體大小 */
-  }
-
-  .nav {
-    bottom: 0;
-    /* 導航欄貼底 */
-  }
-
-  .home,
-  .about {
-    flex-direction: column-reverse;
-    /* 垂直排列（圖片在上） */
-    justify-content: center;
-    /* 垂直置中 */
-    gap: 2rem;
-    /* 調整間距 */
-    padding-bottom: 6rem;
-    /* 調整下內距 */
-  }
-
-  .about {
-    flex-direction: column;
-    /* 垂直排列（圖片在下） */
-  }
-
-  .img-box {
-    width: 35rem;
-    /* 固定寬度 */
-    height: 35rem;
-    /* 固定高度 */
-  }
-
-  .resume,
-  .portfolio {
-    padding-bottom: 25rem;
-    /* 調整下內距 */
-  }
-
-  .contact {
-    padding-bottom: 16rem;
-    /* 調整下內距 */
-  }
-}
-
-/* 大於 600px 的螢幕 */
-@media screen and (max-width: 600px) {
-
-  .resume,
-  .portfolio {
-    padding-top: 1rem;
-    /* 調整上內距 */
-    padding-bottom: 22rem;
-    /* 調整下內距 */
-  }
-
-  .tab-box {
-    margin-top: 0;
-    /* 移除上邊距 */
-  }
-
-  .contact {
-    padding-top: 1rem;
-    /* 調整上內距 */
-  }
-}
-
-/* 大於 400px 的螢幕 */
-@media screen and (max-width: 400px) {
-  .nav {
-    width: 100%;
-    /* 寬度 100% */
-    border-radius: 0;
-    /* 移除圓角 */
-  }
-
-  .home-info,
-  .about-info {
-    text-align: center;
-    /* 文字置中 */
-  }
-
-  .home-info h1 {
-    font-size: 5rem;
-    /* 調整字體大小 */
-  }
-
-  .home-info .btn-sci {
-    flex-direction: column-reverse;
-    /* 垂直排列（社交圖標在上） */
-  }
-
-  .home-info .btn-sci .sci {
-    margin-left: 0;
-    /* 移除左邊距 */
-    margin-bottom: 2rem;
-    /* 增加底部邊距 */
-  }
-
-  .img-box {
-    width: 30rem;
-    /* 調整寬度 */
-    height: 30rem;
-    /* 調整高度 */
-  }
-
-  .about-info .title {
-    text-align: center;
-    /* 文字置中 */
-  }
-}
-
-/* 大於 350px 的螢幕 */
-@media screen and (max-width: 350px) {
-  .img-box {
-    width: 25rem;
-    /* 調整寬度 */
-    height: 25rem;
-    /* 調整高度 */
-  }
-
-  .tab-list h3 {
-    font-size: 2.3rem;
-    /* 調整標籤文字大小 */
-  }
-}
-
-
-
-
-
-
-
-
-/* 圖片風格的技能進度條 */
-.tab-item.resume-item {
+/* 技能項目卡片 */
+.resume-box.skills .resume-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 2rem 1.5rem;
+  background: var(--third-bg-color);
+  border-radius: 1rem;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.tab-item.resume-item i {
-  font-size: 5rem;
+.resume-box.skills .resume-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 238, 255, 0.2);
+}
+
+/* 技能圖標 */
+.resume-box.skills .resume-item i {
+  font-size: 6rem;
   margin-bottom: 1.5rem;
   color: var(--main-color);
   transition: transform 0.3s, color 0.3s;
 }
 
-.tab-item.resume-item:hover i {
+.resume-box.skills .resume-item:hover i {
   transform: scale(1.1);
   color: #00ccff;
 }
 
+/* 技能內容容器 */
 .skill-content {
   width: 100%;
 }
 
+/* 技能名稱和百分比 */
 .skill-header {
   display: flex;
   justify-content: space-between;
@@ -1207,53 +548,72 @@ section:nth-child(even) {
   color: var(--main-color);
   background: rgba(0, 238, 255, 0.1);
   padding: 0.3rem 0.8rem;
-  border-radius: 1rem;
+  border-radius: 2rem;
 }
 
+/* 進度條背景 */
 .skill-progress {
   width: 100%;
-  height: 10px;
+  height: 1rem;
   background: var(--third-bg-color);
-  border-radius: 5px;
+  border-radius: 0.5rem;
   overflow: hidden;
   position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
+/* 進度條本體 */
 .skill-progress-bar {
   height: 100%;
   background: linear-gradient(90deg, var(--main-color), #00ccff);
-  border-radius: 5px;
+  border-radius: 0.5rem;
   width: 0%;
+  /* 預設為 0%，由 JavaScript 控制 */
   transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  box-shadow: 0 0 10px rgba(0, 238, 255, 0.3);
+  box-shadow: 0 0 10px rgba(0, 238, 255, 0.5);
 }
 
-/* 進度條動畫效果 */
+/* 進度條光澤效果 */
+.skill-progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0.1) 100%);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* 確保技能項目在 active 狀態時顯示 */
 .resume-box.skills.active .skill-progress-bar {
-  animation: fillProgress 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  /* 寬度由 JavaScript 設置，這裡不需要 */
 }
 
-@keyframes fillProgress {
-  from {
-    width: 0%;
-  }
-
-  to {
-    width: var(--target-width);
-  }
-}
-
-
-/* 響應式設計 */
+/* ===== Skills 響應式設計 ===== */
 @media screen and (max-width: 768px) {
-  .tab-item.resume-item {
-    padding: 1.5rem 1rem;
+  .resume-box.skills {
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: 1.5rem;
   }
 
-  .tab-item.resume-item i {
-    font-size: 4rem;
+  .resume-box.skills .resume-item i {
+    font-size: 5rem;
   }
 
   .skill-name {
@@ -1266,120 +626,96 @@ section:nth-child(even) {
   }
 
   .skill-progress {
-    height: 8px;
+    height: 0.8rem;
   }
 }
 
-@media screen and (max-width: 400px) {
-  .tab-item.resume-item i {
-    font-size: 3.5rem;
+@media screen and (max-width: 480px) {
+  .resume-box.skills {
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    gap: 1rem;
+  }
+
+  .resume-box.skills .resume-item {
+    padding: 1.5rem 1rem;
+  }
+
+  .resume-box.skills .resume-item i {
+    font-size: 4rem;
+    margin-bottom: 1rem;
   }
 
   .skill-name {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   .skill-percent {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 
   .skill-progress {
-    height: 6px;
+    height: 0.6rem;
   }
 }
 
+@media screen and (max-width: 350px) {
+  .resume-box.skills {
+    grid-template-columns: 1fr;
+  }
+}
 
-
-/* 下拉菜單容器 - 設置為相對定位，使內部絕對定位元素以此為參考 */
+/* 下拉菜單 */
 .resume-dropdown {
   position: relative;
-  /* 相對定位，作為子元素的定位基準 */
   display: inline-block;
-  /* 行內塊元素，既保持行內特性又可設置寬高 */
 }
 
-/* 主按鈕樣式 */
 .resume-main-btn {
   padding: 10px 20px;
-  /* 內邊距：上下10px，左右20px */
   background-color: #007bff;
-  /* 背景顏色：藍色 */
   color: white;
-  /* 文字顏色：白色 */
   border: none;
-  /* 移除默認邊框 */
   border-radius: 28px;
-  /* 圓角：5px */
   cursor: pointer;
-  /* 鼠標指針：手型 */
   display: flex;
-  /* 使用flex佈局 */
   align-items: center;
-  /* 垂直居中對齊 */
   gap: 8px;
-  /* 內部元素間距：8px */
 }
 
-/* 下拉選項容器（初始隱藏） */
 .resume-options {
   display: none;
-  /* 初始隱藏 */
   position: absolute;
-  /* 絕對定位，相對於.resume-dropdown */
   background-color: #87c8ee;
-  /* 背景顏色：白色 */
   min-width: 180px;
-  /* 最小寬度：180px */
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  /* 陰影效果：X偏移0 Y偏移8px 模糊16px 黑色帶透明度0.2 */
   border-radius: 2px;
-  /* 圓角：5px */
   z-index: 1;
-  /* 層級：確保顯示在最上層 */
 }
 
-/* 下拉選項鏈接樣式 */
 .resume-options a {
   color: black;
-  /* 文字顏色：黑色 */
   padding: 12px 16px;
-  /* 內邊距：上下12px，左右16px */
-  text-decoration: none;
-  /* 移除下劃線 */
   display: block;
-  /* 塊級顯示，使整個區域可點擊 */
   border-bottom: 1px solid #1097e6;
-  /* 底部邊框：1px淺灰色 */
 }
 
-/* 最後一個下拉選項 */
 .resume-options a:last-child {
   border-bottom: none;
-  /* 移除底部邊框 */
 }
 
-/* 下拉選項鼠標懸停效果 */
 .resume-options a:hover {
   background-color: #f1f1f1;
-  /* 懸停時背景變為淺灰色 */
 }
 
-/* 鼠標懸停在整個下拉菜單時的顯示效果 */
 .resume-dropdown:hover .resume-options {
   display: block;
-  /* 顯示下拉選項 */
 }
 
-/* 鼠標懸停時主按鈕的顏色變化 */
 .resume-dropdown:hover .resume-main-btn {
   background-color: #0056b3;
-  /* 背景顏色變深藍色 */
 }
 
-
-
-
-/* 能力證明樣式 */
+/* 能力證明 */
 .certificate {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
@@ -1393,7 +729,7 @@ section:nth-child(even) {
   padding: 2.5rem;
   display: flex;
   gap: 2rem;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: 0.3s;
   position: relative;
   overflow: hidden;
 }
@@ -1407,7 +743,7 @@ section:nth-child(even) {
   height: 100%;
   background: var(--main-color);
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: 0.3s;
 }
 
 .certificate-item:hover {
@@ -1436,7 +772,6 @@ section:nth-child(even) {
   font-size: 2rem;
   color: var(--main-color);
   margin-bottom: 0.8rem;
-  line-height: 1.3;
 }
 
 .certificate-issuer {
@@ -1460,7 +795,6 @@ section:nth-child(even) {
   font-size: 1.5rem;
   color: #ccc;
   line-height: 1.6;
-  margin-top: 0.5rem;
 }
 
 .certificate-skills {
@@ -1476,7 +810,6 @@ section:nth-child(even) {
   padding: 0.4rem 1.2rem;
   border-radius: 2rem;
   font-size: 1.3rem;
-  font-weight: 500;
   border: 1px solid rgba(0, 238, 255, 0.3);
   transition: 0.3s;
 }
@@ -1484,58 +817,300 @@ section:nth-child(even) {
 .skill-tag:hover {
   background: var(--main-color);
   color: var(--bg-color);
-  border-color: var(--main-color);
 }
 
-.certificate-list {
-  margin-top: 1rem;
+/* ===== About 區塊 - 照片網格 ===== */
+.about {
+  display: flex;
+  gap: 5rem;
+  align-items: flex-start;
+  padding: 4rem 5%;
 }
 
-.certificate-list p {
-  font-size: 1.5rem;
-  color: #ccc;
-  margin-bottom: 0.5rem;
-  padding-left: 1rem;
+/* 左側照片網格 - 可滾動 */
+.photo-grid {
+  flex: 0 0 40%;
+  height: 70vh;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  padding-right: 1rem;
+}
+
+.photo-grid::-webkit-scrollbar {
+  width: 5px;
+}
+
+.photo-grid::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+  border-radius: 1rem;
+}
+
+.photo-item {
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 1rem;
+  overflow: hidden;
+  cursor: pointer;
+  border: 3px solid transparent;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   position: relative;
 }
 
-.certificate-list p::before {
-  content: '•';
-  color: var(--main-color);
-  font-weight: bold;
-  position: absolute;
-  left: 0;
+.photo-item:hover {
+  border-color: var(--main-color);
+  transform: scale(1.02);
+  box-shadow: 0 0 30px var(--main-color);
+  z-index: 10;
 }
 
+.photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
 
+.photo-item:hover img {
+  transform: scale(1.1);
+}
 
-/* 能力證明標籤頁的響應式設計 */
+.photo-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 238, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.photo-item:hover .photo-overlay {
+  opacity: 1;
+}
+
+.photo-overlay i {
+  font-size: 3rem;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  border-radius: 50%;
+}
+
+/* 右側放大文字 */
+.about-info-large {
+  flex: 1;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding-right: 2rem;
+}
+
+.about-info-large .title {
+  font-size: 5rem;
+  color: var(--main-color);
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.about-info-large h3 {
+  font-size: 3rem;
+  color: var(--white-color);
+  margin-bottom: 2.5rem;
+  font-weight: 500;
+}
+
+.about-info-large .desc {
+  font-size: 2.2rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  color: #e0e0e0;
+}
+
+.about-info-large .highlight {
+  font-size: 2.4rem;
+  color: var(--main-color);
+  font-weight: 500;
+  border-left: 4px solid var(--main-color);
+  padding-left: 2rem;
+  background: rgba(0, 238, 255, 0.05);
+  border-radius: 0 1rem 1rem 0;
+}
+
+.about-info-large::-webkit-scrollbar {
+  width: 5px;
+}
+
+.about-info-large::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+  border-radius: 1rem;
+}
+
+/* 全螢幕 Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 90%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 3px solid var(--main-color);
+  border-radius: 1rem;
+  box-shadow: 0 0 50px var(--main-color);
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: var(--main-color);
+  font-size: 5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 10000;
+}
+
+.close-btn:hover {
+  color: white;
+  transform: scale(1.2);
+}
+
+/* ===== 響應式設計 ===== */
+@media screen and (max-width: 1200px) {
+  html {
+    font-size: 55%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .section {
+    padding: 0 4%;
+  }
+
+  .about {
+    gap: 3rem;
+  }
+
+  .photo-grid {
+    flex: 0 0 45%;
+  }
+
+  .about-info-large .title {
+    font-size: 4.5rem;
+  }
+
+  .about-info-large .desc {
+    font-size: 2rem;
+  }
+}
+
 @media screen and (max-width: 768px) {
-  .certificate {
-    grid-template-columns: 1fr;
+  html {
+    font-size: 50%;
   }
 
-  .certificate-item {
-    padding: 2rem;
+  .nav {
+    bottom: 0;
   }
 
-  .certificate-icon {
-    font-size: 3.5rem;
+  .home {
+    flex-direction: column-reverse;
+    justify-content: center;
+    gap: 2rem;
+    padding-bottom: 6rem;
   }
 
-  .certificate-content h4 {
+  .about {
+    flex-direction: column;
+    padding-bottom: 8rem;
+  }
+
+  .photo-grid {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 50vh;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .about-info-large {
+    width: 100%;
+    max-height: 40vh;
+    text-align: center;
+  }
+
+  .about-info-large .title {
+    text-align: center;
+  }
+
+  .about-info-large .highlight {
+    border-left: none;
+    border-top: 4px solid var(--main-color);
+    padding-left: 0;
+    padding-top: 1.5rem;
+  }
+
+  .img-box {
+    width: 35rem;
+    height: 35rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .about-info-large .desc {
     font-size: 1.8rem;
+  }
+
+  .about-info-large .highlight {
+    font-size: 2rem;
+  }
+
+  .photo-grid {
+    height: 40vh;
   }
 }
 
 @media screen and (max-width: 400px) {
-  .certificate-item {
-    flex-direction: column;
-    gap: 1rem;
+  .nav {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .home-info {
     text-align: center;
   }
 
-  .certificate-icon {
-    justify-content: center;
+  .home-info h1 {
+    font-size: 5rem;
+  }
+
+  .img-box {
+    width: 30rem;
+    height: 30rem;
   }
 }

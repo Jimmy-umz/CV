@@ -7,14 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Professional Self-Introduction (CV)</title>
 
-  <!-- logo 圖案 存放-->
+  <!-- logo 圖案 -->
   <link rel="icon" href="images/logo.png" type="image/png" />
 
-  <!-- Boxicons 圖標庫連結 -->
+  <!-- Boxicons 圖標庫 -->
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 
-
-  <!-- CSS 檔案連結 -->
+  <!-- CSS 檔案 -->
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -38,7 +37,6 @@
         <i class="bx bx-briefcase"></i>
         <span class="tooltip">作品集</span>
       </li>
-
     </ul>
   </nav>
 
@@ -79,39 +77,87 @@
         </div>
       </section>
 
-      <!-- 關於區段 -->
+      <!-- 關於區段 - 左邊照片網格 + 右邊放大文字 -->
       <section class="section about">
-        <div class="img-wrapper">
+        <!-- 左側：照片網格（可滾動） -->
+        <div class="photo-grid">
+          <div class="photo-item" onclick="openFullscreen('images/photo1.jpg')">
+            <img src="images/photo1.jpg" alt="照片 1" loading="lazy">
+            <div class="photo-overlay">
+              <i class="bx bx-search-alt"></i>
+            </div>
+          </div>
 
+          <div class="photo-item" onclick="openFullscreen('images/photo2.jpg')">
+            <img src="images/photo2.jpg" alt="照片 2" loading="lazy">
+            <div class="photo-overlay">
+              <i class="bx bx-search-alt"></i>
+            </div>
+          </div>
+
+          <div class="photo-item" onclick="openFullscreen('images/photo3.jpg')">
+            <img src="images/photo3.jpg" alt="照片 3" loading="lazy">
+            <div class="photo-overlay">
+              <i class="bx bx-search-alt"></i>
+            </div>
+          </div>
+
+          <div class="photo-item" onclick="openFullscreen('images/photo4.jpg')">
+            <img src="images/photo4.jpg" alt="照片 4" loading="lazy">
+            <div class="photo-overlay">
+              <i class="bx bx-search-alt"></i>
+            </div>
+          </div>
+
+          <div class="photo-item" onclick="openFullscreen('images/photo5.jpg')">
+            <img src="images/photo5.jpg" alt="照片 5" loading="lazy">
+            <div class="photo-overlay">
+              <i class="bx bx-search-alt"></i>
+            </div>
+          </div>
+
+          <div class="photo-item" onclick="openFullscreen('images/photo6.jpg')">
+            <img src="images/photo6.jpg" alt="照片 6" loading="lazy">
+            <div class="photo-overlay">
+              <i class="bx bx-search-alt"></i>
+            </div>
+          </div>
         </div>
 
-        <div class="about-info">
+        <!-- 右側：放大後的自我介紹 -->
+        <div class="about-info-large">
           <h2 class="title">About me</h2>
-          <h3>Higher Diploma in Software Engineering（Fresh Graduate）</h3>
-          <p class="desc">
-            I am a Software Engineering student specializing in full-stack development and the integration of front-end
-            and back-end technologies.
+          <h3>Higher Diploma in Software Engineering (Fresh Graduate)</h3>
 
-            On the front end, I have a solid foundation in HTML, CSS, and JavaScript, and I am actively learning
-            modern frameworks such as Vue.js and React to build intuitive and responsive user interfaces.
-            <br />
-            <br />
-            On the back end, I have hands-on experience with Java, PHP, and Python, and I am proficient in
-            MySQL database design and operations. I am also familiar with the Linux environment and basic
-            service deployment.
-            <br />
-            <br />
-            Additionally, I am currently preparing for the CCNA (Cisco Certified Network Associate) certification,
-            through which I have gained a systematic understanding of network architecture, routing and switching, and
-            network security. This knowledge enables me to better comprehend the complete workflow of
-            applications—from the user interface and business logic to network transmission and data storage—laying a
-            solid foundation for building efficient, stable, and secure distributed systems.
-            <br />
-          </p>
+          <div class="about-content">
+            <p class="desc">
+              I am a Software Engineering student specializing in full-stack development and the integration of
+              front-end and back-end technologies.
+            </p>
+
+            <p class="desc">
+              On the front end, I have a solid foundation in HTML, CSS, and JavaScript, and I am actively learning
+              modern frameworks such as Vue.js and React to build intuitive and responsive user interfaces.
+            </p>
+
+            <p class="desc">
+              On the back end, I have hands-on experience with Java, PHP, and Python, and I am proficient in MySQL
+              database design and operations. I am also familiar with the Linux environment and basic service
+              deployment.
+            </p>
+
+            <p class="desc highlight">
+              Additionally, I am currently preparing for the CCNA (Cisco Certified Network Associate) certification,
+              through which I have gained a systematic understanding of network architecture, routing and switching, and
+              network security. This knowledge enables me to better comprehend the complete workflow of
+              applications—from the user interface and business logic to network transmission and data storage—laying a
+              solid foundation for building efficient, stable, and secure distributed systems.
+            </p>
+          </div>
         </div>
       </section>
 
-      <!-- 履歷區段（經歷、技能、教育） -->
+      <!-- 履歷區段 -->
       <section class="section resume">
         <h2 class="title">Resume</h2>
         <div class="tab-box">
@@ -121,59 +167,46 @@
           <div class="tab-list resume-list active">
             <h3>Skills</h3>
           </div>
-          <div class="tab-list resume-list ">
+          <div class="tab-list resume-list">
             <h3>Education</h3>
           </div>
         </div>
 
         <div class="tab-wrapper">
-          <!-- 經歷標籤內容 -->
+          <!-- 經歷 -->
           <div class="tab-grid resume-box experience">
             <div class="tab-item resume-item">
               <h4>2025 - Now</h4>
               <h4>Warehouse Clerk</h4>
-
               <h4>Hong Kong Air Cargo Terminals</h4>
-              <p>
-                Proficient in operating the Hong Kong Air Cargo Terminals Limited (Hactl) system, daily tasks include
-
+              <p>Proficient in operating the Hong Kong Air Cargo Terminals Limited (Hactl) system, daily tasks include
                 entering large volumes of cargo information, updating status, and performing accurate database queries,
-
-                facilitating departmental collaboration and overall operational efficiency.
-              </p>
+                facilitating departmental collaboration and overall operational efficiency.</p>
             </div>
 
             <div class="tab-item resume-item">
               <h4>2021 - 2024</h4>
               <h4>Interior Decorator</h4>
               <h4>Innovation Engineering Limited</h4>
-              <p>
-                Responsible for measuring, installing, and customizing various types of furniture. As a core member,
+              <p>Responsible for measuring, installing, and customizing various types of furniture. As a core member,
                 participated in multiple interior design and commercial engineering projects, collaborating efficiently
                 with project team members to solve on-site technical problems and ensure all projects were delivered on
-                time and to standards.
-              </p>
+                time and to standards.</p>
             </div>
 
             <div class="tab-item resume-item">
               <h4>2019 - 2021</h4>
               <h4>Warehouse Clerk</h4>
               <h4>A&S(HK) Logistics Limited</h4>
-              <p>
-                Independently responsible for the company's cargo classification and freight operations, while assisting
-                colleagues with goods sorting.
-                Supported supervisors in executing hazardous materials transportation procedures.
-                Proficient in operating the Cathay Pacific Cargo system to complete cargo information entry, database
-                queries, and customer delivery tasks.
-              </p>
+              <p>Independently responsible for the company's cargo classification and freight operations, while
+                assisting colleagues with goods sorting. Supported supervisors in executing hazardous materials
+                transportation procedures. Proficient in operating the Cathay Pacific Cargo system to complete cargo
+                information entry, database queries, and customer delivery tasks.</p>
             </div>
-
           </div>
 
-          <!-- 技能標籤內容 - 圖片風格進度條 -->
+          <!-- 技能 -->
           <div class="tab-grid resume-box skills active">
-
-            <!-- 前端核心技能 -->
             <div class="tab-item resume-item">
               <i class="bx bxl-html5"></i>
               <div class="skill-content">
@@ -213,7 +246,6 @@
               </div>
             </div>
 
-            <!-- 前端框架 -->
             <div class="tab-item resume-item">
               <i class="bx bxl-react"></i>
               <div class="skill-content">
@@ -240,7 +272,6 @@
               </div>
             </div>
 
-            <!-- 後端技能 -->
             <div class="tab-item resume-item">
               <i class="bx bxl-nodejs"></i>
               <div class="skill-content">
@@ -293,7 +324,6 @@
               </div>
             </div>
 
-            <!-- 系統與資料庫 -->
             <div class="tab-item resume-item">
               <i class="bx bxl-tux"></i>
               <div class="skill-content">
@@ -319,37 +349,32 @@
                 </div>
               </div>
             </div>
-
           </div>
 
-          <!-- 教育標籤內容（預設啟用） -->
+          <!-- 教育 -->
           <div class="tab-grid resume-box education">
             <div class="tab-item resume-item">
               <h4>2024 - 2026</h4>
               <h4>Software Engineering (Higher Diploma)</h4>
-              <h4>Vocational Training Council(VTC)</h4>
-              <p>
-                Develop a solid foundation in programming, database design, and network administration. Gain experience
+              <h4>Vocational Training Council (VTC)</h4>
+              <p>Develop a solid foundation in programming, database design, and network administration. Gain experience
                 in the software development lifecycle, mobile application development, and web technologies. Develop
-                teamwork and problem-solving skills through group projects and real-world case studies.
-              </p>
+                teamwork and problem-solving skills through group projects and real-world case studies.</p>
             </div>
 
             <div class="tab-item resume-item">
               <h4>2022 - 2023</h4>
-              <h4>Microfilm Production(YiJin Diploma)</h4>
+              <h4>Microfilm Production (YiJin Diploma)</h4>
               <h4>Lingnan Institute of Further Education</h4>
-              <p>
-                Gain solid foundational skills in digital media production and creative design. Proficient in utilizing
+              <p>Gain solid foundational skills in digital media production and creative design. Proficient in utilizing
                 industry-standard tools for graphic design, website prototyping, and video editing. Enhance creative
-                ideation and project presentation skills through individual assignments and collaborative projects.
-              </p>
+                ideation and project presentation skills through individual assignments and collaborative projects.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- 作品集區段（作品、服務） -->
+      <!-- 作品集區段 -->
       <section class="section portfolio">
         <h2 class="title">作品集</h2>
         <div class="tab-box">
@@ -362,17 +387,15 @@
         </div>
 
         <div class="tab-wrapper">
-          <!-- 作品標籤內容 -->
+          <!-- 作品 -->
           <div class="tab-grid portfolio-box work active">
-            <div class="tab-item portfolio-item ">
+            <div class="tab-item portfolio-item">
               <div class="work-img">
                 <img src="images/work1.jpg" alt="作品 1" />
               </div>
               <div class="work-info">
-                <h4>前端專案(CV网页开发)</h4>
-                <p>這是一個範例描述，通常這裡會放專案簡介。
-                  (最简单的一个功能，使用了HTML、CSS和JavaScript来创建一个响应式的个人简历网页。)</p>
-                </p>
+                <h4>前端專案 (CV網頁開發)</h4>
+                <p>這是一個範例描述，使用了HTML、CSS和JavaScript來創建一個響應式的個人簡歷網頁。</p>
                 <div class="tech-used">
                   <p>HTML5, CSS3, JavaScript</p>
                 </div>
@@ -388,7 +411,6 @@
                 </div>
               </div>
             </div>
-
 
             <div class="tab-item portfolio-item">
               <div class="work-img">
@@ -413,6 +435,51 @@
               </div>
             </div>
 
+            <div class="tab-item portfolio-item">
+              <div class="work-img">
+                <img src="images/work2.jpg" alt="作品 2" />
+              </div>
+              <div class="work-info">
+                <h4>前端專案</h4>
+                <p>這是一個範例描述，通常這裡會放專案簡介。</p>
+                <div class="tech-used">
+                  <p>HTML5, CSS3, JavaScript</p>
+                </div>
+                <div class="portfolio-icon work-icon">
+                  <a href="#">
+                    <i class="bx bx-arrow-back"></i>
+                    <span class="tooltip">預覽</span>
+                  </a>
+                  <a href="#">
+                    <i class="bx bxl-github"></i>
+                    <span class="tooltip">Github 倉庫</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-item portfolio-item">
+              <div class="work-img">
+                <img src="images/work2.jpg" alt="作品 2" />
+              </div>
+              <div class="work-info">
+                <h4>前端專案</h4>
+                <p>這是一個範例描述，通常這裡會放專案簡介。</p>
+                <div class="tech-used">
+                  <p>HTML5, CSS3, JavaScript</p>
+                </div>
+                <div class="portfolio-icon work-icon">
+                  <a href="#">
+                    <i class="bx bx-arrow-back"></i>
+                    <span class="tooltip">預覽</span>
+                  </a>
+                  <a href="#">
+                    <i class="bx bxl-github"></i>
+                    <span class="tooltip">Github 倉庫</span>
+                  </a>
+                </div>
+              </div>
+            </div>
 
             <div class="tab-item portfolio-item">
               <div class="work-img">
@@ -436,109 +503,10 @@
                 </div>
               </div>
             </div>
-
-
-            <div class="tab-item portfolio-item">
-              <div class="work-img">
-                <img src="images/work4.jpg" alt="作品 4" />
-              </div>
-              <div class="work-info">
-                <h4>前端專案</h4>
-                <p>這是一個範例描述，通常這裡會放專案簡介。</p>
-                <div class="tech-used">
-                  <p>HTML5, CSS3, JavaScript</p>
-                </div>
-                <div class="portfolio-icon work-icon">
-                  <a href="#">
-                    <i class="bx bx-arrow-back"></i>
-                    <span class="tooltip">預覽</span>
-                  </a>
-                  <a href="#">
-                    <i class="bx bxl-github"></i>
-                    <span class="tooltip">Github 倉庫</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="tab-item portfolio-item">
-              <div class="work-img">
-                <img src="images/work5.jpg" alt="作品 5" />
-              </div>
-              <div class="work-info">
-                <h4>前端專案</h4>
-                <p>這是一個範例描述，通常這裡會放專案簡介。</p>
-                <div class="tech-used">
-                  <p>HTML5, CSS3, JavaScript</p>
-                </div>
-                <div class="portfolio-icon work-icon">
-                  <a href="#">
-                    <i class="bx bx-arrow-back"></i>
-                    <span class="tooltip">預覽</span>
-                  </a>
-                  <a href="#">
-                    <i class="bx bxl-github"></i>
-                    <span class="tooltip">Github 倉庫</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="tab-item portfolio-item">
-              <div class="work-img">
-                <img src="images/work6.jpg" alt="作品 6" />
-              </div>
-              <div class="work-info">
-                <h4>前端專案</h4>
-                <p>這是一個範例描述，通常這裡會放專案簡介。</p>
-                <div class="tech-used">
-                  <p>HTML5, CSS3, JavaScript</p>
-                </div>
-                <div class="portfolio-icon work-icon">
-                  <a href="#">
-                    <i class="bx bx-arrow-back"></i>
-                    <span class="tooltip">預覽</span>
-                  </a>
-                  <a href="#">
-                    <i class="bx bxl-github"></i>
-                    <span class="tooltip">Github 倉庫</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="tab-item portfolio-item">
-              <div class="work-img">
-                <img src="images/work6.jpg" alt="作品 7" />
-              </div>
-              <div class="work-info">
-                <h4>前端專案</h4>
-                <p>這是一個範例描述，通常這裡會放專案簡介。</p>
-                <div class="tech-used">
-                  <p>HTML5, CSS3, JavaScript</p>
-                </div>
-                <div class="portfolio-icon work-icon">
-                  <a href="#">
-                    <i class="bx bx-arrow-back"></i>
-                    <span class="tooltip">預覽</span>
-                  </a>
-                  <a href="#">
-                    <i class="bx bxl-github"></i>
-                    <span class="tooltip">Github 倉庫</span>
-                  </a>
-                </div>
-              </div>
-            </div>
           </div>
 
-
-
-          <!-- 能力證明標籤內容 -->
+          <!-- 能力證明 -->
           <div class="tab-grid portfolio-box certificate">
-            <!-- 專業證照 -->
             <div class="tab-item certificate-item">
               <div class="certificate-icon">
                 <i class="bx bx-certification"></i>
@@ -551,7 +519,6 @@
               </div>
             </div>
 
-            <!-- 語言能力 -->
             <div class="tab-item certificate-item">
               <div class="certificate-icon">
                 <i class="bx bx-chip"></i>
@@ -567,68 +534,30 @@
               </div>
             </div>
 
-            <!-- 學術成就 -->
             <div class="tab-item certificate-item">
               <div class="certificate-icon">
                 <i class="bx bx-trophy"></i>
               </div>
               <div class="certificate-content">
                 <h4>學術成就</h4>
-                <p class="certificate-issuer"> Vocational Training Council(VTC)</p>
+                <p class="certificate-issuer">Vocational Training Council (VTC)</p>
                 <p class="certificate-date">2024 - 2026</p>
                 <p class="certificate-desc">軟體工程高級文憑 - 在校成績優異，專注於全端開發與系統設計</p>
               </div>
             </div>
-
-            <!-- 專業培訓 -->
-            <div class="tab-item certificate-item">
-              <div class="certificate-icon">
-                <i class="bx bx-book-open"></i>
-              </div>
-              <div class="certificate-content">
-                <h4>專業培訓</h4>
-                <p class="certificate-issuer">網路管理與安全培訓</p>
-                <p class="certificate-date">2024</p>
-                <p class="certificate-desc">完成網路基礎架構、路由協定、網路安全防護等專業培訓課程</p>
-              </div>
-            </div>
-
-            <!-- 工作坊與研討會 -->
-            <div class="tab-item certificate-item">
-              <div class="certificate-icon">
-                <i class="bx bx-group"></i>
-              </div>
-              <div class="certificate-content">
-                <h4>技術工作坊</h4>
-                <p class="certificate-issuer">Web Development Workshop</p>
-                <p class="certificate-date">2025</p>
-                <p class="certificate-desc">參與現代前端框架實戰工作坊，學習 React、Vue 等技術實務應用</p>
-              </div>
-            </div>
-
-            <!-- 其他證照 -->
-            <div class="tab-item certificate-item">
-              <div class="certificate-icon">
-                <i class="bx bx-award"></i>
-              </div>
-              <div class="certificate-content">
-                <h4>其他專業證照</h4>
-                <p class="certificate-issuer">持續進修</p>
-                <div class="certificate-list">
-                  <p>• Linux 基礎系統管理</p>
-                  <p>• MySQL 資料庫設計認證 (準備中)</p>
-                  <p>• 網路安全基礎認證</p>
-                </div>
-              </div>
-            </div>
           </div>
-
-
         </div>
       </section>
+    </div>
+  </div>
 
+  <!-- 全螢幕照片檢視 Modal -->
+  <div id="fullscreen-modal" class="modal" onclick="closeFullscreen()">
+    <span class="close-btn">&times;</span>
+    <img class="modal-content" id="fullscreen-img">
+  </div>
 
-      <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
