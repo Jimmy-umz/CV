@@ -144,3 +144,30 @@ document.getElementById('fullscreen-modal').addEventListener('click', (e) => {
   if (e.target === e.currentTarget) closeFullscreen();
 });
 
+
+// ===== 職業規劃標籤切換 =====
+const careerTabs = document.querySelectorAll('.career-tab-list');
+const devTimeline = document.getElementById('dev-timeline');
+const networkTimeline = document.getElementById('network-timeline');
+
+if (careerTabs.length > 0) {
+  careerTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // 移除所有 active
+      careerTabs.forEach(t => t.classList.remove('active'));
+
+      // 加上 active
+      tab.classList.add('active');
+
+      // 切換時間線
+      const path = tab.getAttribute('data-path');
+      if (path === 'dev') {
+        devTimeline.classList.add('active');
+        networkTimeline.classList.remove('active');
+      } else {
+        networkTimeline.classList.add('active');
+        devTimeline.classList.remove('active');
+      }
+    });
+  });
+}

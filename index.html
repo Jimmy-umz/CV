@@ -23,19 +23,19 @@
     <ul class="nav-list">
       <li class="active">
         <i class="bx bx-home-alt"></i>
-        <span class="tooltip">首頁</span>
+        <span class="tooltip">About me</span>
       </li>
       <li>
         <i class="bx bx-user"></i>
-        <span class="tooltip">關於</span>
+        <span class="tooltip">Career Planning</span>
       </li>
       <li>
         <i class="bx bx-detail"></i>
-        <span class="tooltip">履歷</span>
+        <span class="tooltip">Resume</span>
       </li>
       <li>
         <i class="bx bx-briefcase"></i>
-        <span class="tooltip">作品集</span>
+        <span class="tooltip">Portfolio</span>
       </li>
     </ul>
   </nav>
@@ -51,6 +51,21 @@
           <h3>江家賢</h3>
           <h3>Higher Diploma - Software Engineering (Fresh Graduate)</h3>
 
+          <div class="home-about-section">
+            <h4 class="home-about-title">About Me</h4>
+
+            <p class="desc">
+              Software Engineering student specializing in full-stack development.
+              Proficient in HTML/CSS/JavaScript, with experience in Java, PHP, Python, and MySQL.
+              Familiar with Linux environment and basic service deployment.
+            </p>
+
+            <p class="desc highlight">
+              Currently preparing for CCNA certification to deepen understanding of
+              network architecture and security for building robust distributed systems.
+            </p>
+          </div>
+
           <div class="btn-sci">
             <div class="resume-dropdown">
               <button class="resume-main-btn">
@@ -62,104 +77,127 @@
                 <a href="CV/English CV.pdf" download>English Resume</a>
               </div>
             </div>
-            <div class="sci">
-              <a href="https://www.youkewang.top" target="_blank">
-                <i class="bx bxl-youtube"></i>
-                <span class="tooltip">YouTube</span>
-              </a>
-            </div>
           </div>
         </div>
+
         <div class="img-wrapper">
           <div class="img-box home-img">
-            <img src="images/imgs.png" alt="個人頭像" />
+            <img src="images/imgs.jpg" alt="個人頭像" />
           </div>
         </div>
       </section>
 
-      <!-- 關於區段 - 左邊照片網格 + 右邊放大文字 -->
+      <!-- 職業規劃區段 -->
       <section class="section about">
-        <!-- 左側：照片網格（可滾動） -->
-        <div class="photo-grid">
-          <div class="photo-item" onclick="openFullscreen('images/photo1.jpg')">
-            <img src="images/photo1.jpg" alt="照片 1" loading="lazy">
-            <div class="photo-overlay">
-              <i class="bx bx-search-alt"></i>
+        <div class="career-container">
+          <h2 class="career-title">Career Planning</h2>
+
+          <div class="career-tab-box">
+            <div class="career-tab-list active" data-path="dev">
+              <h3>Program development</h3>
+            </div>
+            <div class="career-tab-list" data-path="network">
+              <h3>Network Engineering</h3>
             </div>
           </div>
 
-          <div class="photo-item" onclick="openFullscreen('images/photo2.jpg')">
-            <img src="images/photo2.jpg" alt="照片 2" loading="lazy">
-            <div class="photo-overlay">
-              <i class="bx bx-search-alt"></i>
+          <div class="career-timeline-wrapper">
+            <!-- 程式開發時間線 -->
+            <div class="timeline-vertical active" id="dev-timeline">
+              <div class="timeline-row">
+                <div class="timeline-left">
+                  <span class="timeline-year">2026 - 2026</span>
+                </div>
+                <div class="timeline-right">
+                  <h4>Junior Full-stack Developer</h4>
+                  <ul>
+                    <li>Deep learning in modern front-end frameworks (React, Vue)</li>
+                    <li>Establish a personal tech blog to share learning experiences</li>
+                    <li>Continuously improve programming skills (Java, Python, SQL)</li>
+                    <li>Seek relevant job opportunities</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="timeline-row">
+                <div class="timeline-left">
+                  <span class="timeline-year">2027 - 2029</span>
+                </div>
+                <div class="timeline-right">
+                  <h4>Mid-level Developer</h4>
+                  <ul>
+                    <li>Independently develop complete front-end and back-end projects</li>
+                    <li>Collaborate with the team on project management and code reviews</li>
+                    <li>Deepen understanding and application of programming languages</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="timeline-row">
+                <div class="timeline-left">
+                  <span class="timeline-year">2030+</span>
+                </div>
+                <div class="timeline-right">
+                  <h4>Continuing Education or Becoming a Senior Technical Member</h4>
+                  <ul>
+                    <li>Lead a small development team</li>
+                    <li>Focus on technical decision-making and architecture planning</li>
+                    <li>Mentor newcomers and share technical knowledge</li>
+                  </ul>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <div class="photo-item" onclick="openFullscreen('images/photo3.jpg')">
-            <img src="images/photo3.jpg" alt="照片 3" loading="lazy">
-            <div class="photo-overlay">
-              <i class="bx bx-search-alt"></i>
+            <!-- 網路工程時間線 -->
+            <div class="timeline-vertical" id="network-timeline">
+              <div class="timeline-row">
+                <div class="timeline-left">
+                  <span class="timeline-year">2026</span>
+                </div>
+                <div class="timeline-right">
+                  <h4>CCNA Certification Preparation</h4>
+                  <ul>
+                    <li>Self-study network fundamentals (Routing/Switching)</li>
+                    <li>Obtain CCNA certification</li>
+                    <li>Understand basic network security concepts</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="timeline-row">
+                <div class="timeline-left">
+                  <span class="timeline-year">2027-2029</span>
+                </div>
+                <div class="timeline-right">
+                  <h4>Junior Network Engineer</h4>
+                  <ul>
+                    <li>Network equipment configuration and maintenance</li>
+                    <li>Accumulate practical experience</li>
+
+                  </ul>
+                </div>
+              </div>
+
+              <div class="timeline-row">
+                <div class="timeline-left">
+                  <span class="timeline-year">2030+</span>
+                </div>
+                <div class="timeline-right">
+                  <h4>Career Choices</h4>
+                  <ul>
+                    <li>Option A: Senior Network Engineer (CCNP/CCIE)</li>
+                    <li>Option B: Transition to Cybersecurity</li>
+                    <li>Obtain relevant certifications (CCNP Security/CISSP)</li>
+                  </ul>
+                </div>
+              </div>
             </div>
-          </div>
-
-          <div class="photo-item" onclick="openFullscreen('images/photo4.jpg')">
-            <img src="images/photo4.jpg" alt="照片 4" loading="lazy">
-            <div class="photo-overlay">
-              <i class="bx bx-search-alt"></i>
-            </div>
-          </div>
-
-          <div class="photo-item" onclick="openFullscreen('images/photo5.jpg')">
-            <img src="images/photo5.jpg" alt="照片 5" loading="lazy">
-            <div class="photo-overlay">
-              <i class="bx bx-search-alt"></i>
-            </div>
-          </div>
-
-          <div class="photo-item" onclick="openFullscreen('images/photo6.jpg')">
-            <img src="images/photo6.jpg" alt="照片 6" loading="lazy">
-            <div class="photo-overlay">
-              <i class="bx bx-search-alt"></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- 右側：放大後的自我介紹 -->
-        <div class="about-info-large">
-          <h2 class="title">About me</h2>
-          <h3>Higher Diploma in Software Engineering (Fresh Graduate)</h3>
-
-          <div class="about-content">
-            <p class="desc">
-              I am a Software Engineering student specializing in full-stack development and the integration of
-              front-end and back-end technologies.
-            </p>
-
-            <p class="desc">
-              On the front end, I have a solid foundation in HTML, CSS, and JavaScript, and I am actively learning
-              modern frameworks such as Vue.js and React to build intuitive and responsive user interfaces.
-            </p>
-
-            <p class="desc">
-              On the back end, I have hands-on experience with Java, PHP, and Python, and I am proficient in MySQL
-              database design and operations. I am also familiar with the Linux environment and basic service
-              deployment.
-            </p>
-
-            <p class="desc highlight">
-              Additionally, I am currently preparing for the CCNA (Cisco Certified Network Associate) certification,
-              through which I have gained a systematic understanding of network architecture, routing and switching, and
-              network security. This knowledge enables me to better comprehend the complete workflow of
-              applications—from the user interface and business logic to network transmission and data storage—laying a
-              solid foundation for building efficient, stable, and secure distributed systems.
-            </p>
           </div>
         </div>
       </section>
 
-      <!-- 履歷區段 -->
+      <!-- Resume Section -->
       <section class="section resume">
-        <h2 class="title">Resume</h2>
         <div class="tab-box">
           <div class="tab-list resume-list">
             <h3>Work Experience</h3>
@@ -173,35 +211,87 @@
         </div>
 
         <div class="tab-wrapper">
-          <!-- 經歷 -->
+          <!-- Experience - Timeline Version   -->
           <div class="tab-grid resume-box experience">
-            <div class="tab-item resume-item">
-              <h4>2025 - Now</h4>
-              <h4>Warehouse Clerk</h4>
-              <h4>Hong Kong Air Cargo Terminals</h4>
-              <p>Proficient in operating the Hong Kong Air Cargo Terminals Limited (Hactl) system, daily tasks include
-                entering large volumes of cargo information, updating status, and performing accurate database queries,
-                facilitating departmental collaboration and overall operational efficiency.</p>
+            <!-- 2025 - Now -->
+            <div class="timeline-card">
+              <div class="timeline-marker">
+                <div class="timeline-dot"></div>
+                <div class="timeline-line"></div>
+              </div>
+
+              <div class="timeline-content">
+                <div class="timeline-year">2025 - Now</div>
+                <h4 class="timeline-position">Warehouse Clerk</h4>
+
+                <div class="company-badge">
+                  <div class="company-logo-wrapper">
+                    <img src="images/hactl - logo.png" alt="Hactl" class="company-logo">
+                  </div>
+                  <span class="company-name">Hong Kong Air Cargo Terminals</span>
+                </div>
+
+                <p class="timeline-description">
+                  Proficient in operating the Hong Kong Air Cargo Terminals Limited (Hactl) system,
+                  daily tasks include entering large volumes of cargo information, updating status,
+                  and performing accurate database queries, facilitating departmental collaboration
+                  and overall operational efficiency.
+                </p>
+              </div>
             </div>
 
-            <div class="tab-item resume-item">
-              <h4>2021 - 2024</h4>
-              <h4>Interior Decorator</h4>
-              <h4>Innovation Engineering Limited</h4>
-              <p>Responsible for measuring, installing, and customizing various types of furniture. As a core member,
-                participated in multiple interior design and commercial engineering projects, collaborating efficiently
-                with project team members to solve on-site technical problems and ensure all projects were delivered on
-                time and to standards.</p>
+            <!-- 2021 - 2024 -->
+            <div class="timeline-card">
+              <div class="timeline-marker">
+                <div class="timeline-dot"></div>
+                <div class="timeline-line"></div>
+              </div>
+
+              <div class="timeline-content">
+                <div class="timeline-year">2021 - 2024</div>
+                <h4 class="timeline-position">Interior Decorator</h4>
+
+                <div class="company-badge">
+                  <div class="company-logo-wrapper no-logo">
+                    <span class="company-initial">IE</span>
+                  </div>
+                  <span class="company-name">Innovation Engineering Limited</span>
+                </div>
+
+                <p class="timeline-description">
+                  Responsible for measuring, installing, and customizing various types of furniture.
+                  As a core member, participated in multiple interior design and commercial engineering
+                  projects, collaborating efficiently with project team members to solve on-site
+                  technical problems and ensure all projects were delivered on time and to standards.
+                </p>
+              </div>
             </div>
 
-            <div class="tab-item resume-item">
-              <h4>2019 - 2021</h4>
-              <h4>Warehouse Clerk</h4>
-              <h4>A&S(HK) Logistics Limited</h4>
-              <p>Independently responsible for the company's cargo classification and freight operations, while
-                assisting colleagues with goods sorting. Supported supervisors in executing hazardous materials
-                transportation procedures. Proficient in operating the Cathay Pacific Cargo system to complete cargo
-                information entry, database queries, and customer delivery tasks.</p>
+            <!-- 2019 - 2021 -->
+            <div class="timeline-card">
+              <div class="timeline-marker">
+                <div class="timeline-dot"></div>
+              </div>
+
+              <div class="timeline-content">
+                <div class="timeline-year">2019 - 2021</div>
+                <h4 class="timeline-position">Warehouse Clerk</h4>
+
+                <div class="company-badge">
+                  <div class="company-logo-wrapper">
+                    <img src="images/A&S.jfif" alt="A&S Logistics" class="company-logo">
+                  </div>
+                  <span class="company-name">A&S(HK) Logistics Limited</span>
+                </div>
+
+                <p class="timeline-description">
+                  Independently responsible for the company's cargo classification and freight operations,
+                  while assisting colleagues with goods sorting. Supported supervisors in executing
+                  hazardous materials transportation procedures. Proficient in operating the Cathay
+                  Pacific Cargo system to complete cargo information entry, database queries, and
+                  customer delivery tasks.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -351,28 +441,75 @@
             </div>
           </div>
 
-          <!-- 教育 -->
+          <!-- 教育 - 時間軸版本 -->
           <div class="tab-grid resume-box education">
-            <div class="tab-item resume-item">
-              <h4>2024 - 2026</h4>
-              <h4>Software Engineering (Higher Diploma)</h4>
-              <h4>Vocational Training Council (VTC)</h4>
-              <p>Develop a solid foundation in programming, database design, and network administration. Gain experience
-                in the software development lifecycle, mobile application development, and web technologies. Develop
-                teamwork and problem-solving skills through group projects and real-world case studies.</p>
+            <!-- 2024 - 2026 -->
+            <div class="timeline-card">
+              <div class="timeline-marker">
+                <div class="timeline-dot"></div>
+                <div class="timeline-line"></div>
+              </div>
+
+              <div class="timeline-content">
+                <div class="timeline-year">2024 - 2026</div>
+                <h4 class="timeline-position">Software Engineering (Higher Diploma)</h4>
+
+                <div class="company-badge">
+                  <div class="company-logo-wrapper">
+                    <img src="images/HKIIT_Video.jpg" alt="VTC" class="company-logo">
+                  </div>
+                  <span class="company-name">Vocational Training Council (VTC)</span>
+                </div>
+
+                <p class="timeline-description">
+                  Develop a solid foundation in programming, database design, and network administration.
+                  Gain experience in the software development lifecycle, mobile application development,
+                  and web technologies. Develop teamwork and problem-solving skills through group projects
+                  and real-world case studies.
+                </p>
+              </div>
             </div>
 
-            <div class="tab-item resume-item">
-              <h4>2022 - 2023</h4>
-              <h4>Microfilm Production (YiJin Diploma)</h4>
-              <h4>Lingnan Institute of Further Education</h4>
-              <p>Gain solid foundational skills in digital media production and creative design. Proficient in utilizing
-                industry-standard tools for graphic design, website prototyping, and video editing. Enhance creative
-                ideation and project presentation skills through individual assignments and collaborative projects.</p>
+            <!-- 2022 - 2023 -->
+            <div class="timeline-card">
+              <div class="timeline-marker">
+                <div class="timeline-dot"></div>
+              </div>
+
+              <div class="timeline-content">
+                <div class="timeline-year">2022 - 2023</div>
+                <h4 class="timeline-position">Microfilm Production (YiJin Diploma)</h4>
+
+                <div class="company-badge">
+                  <div class="company-logo-wrapper">
+                    <img src="images/life.png" alt="Lingnan Institute" class="company-logo">
+                  </div>
+                  <span class="company-name">Lingnan Institute of Further Education</span>
+                </div>
+
+                <p class="timeline-description">
+                  Gain solid foundational skills in digital media production and creative design.
+                  Proficient in utilizing industry-standard tools for graphic design, website prototyping,
+                  and video editing. Enhance creative ideation and project presentation skills through
+                  individual assignments and collaborative projects.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
+
+
+
+
+
+
+
+
+
+
+
+
 
       <!-- 作品集區段 -->
       <section class="section portfolio">
@@ -387,54 +524,33 @@
         </div>
 
         <div class="tab-wrapper">
-          <!-- 作品 -->
+          <!-- Work - Grid Format -->
           <div class="tab-grid portfolio-box work active">
+            <!-- Work 1 -->
             <div class="tab-item portfolio-item">
               <div class="work-img">
-                <img src="images/work1.jpg" alt="作品 1" />
+                <img src="images/CV.jpg" alt="CV" />
               </div>
               <div class="work-info">
-                <h4>前端專案 (CV網頁開發)</h4>
-                <p>這是一個範例描述，使用了HTML、CSS和JavaScript來創建一個響應式的個人簡歷網頁。</p>
+                <h4>Front-end project (CV web design)</h4>
+                <p>This is a personal CV webpage created using HTML, CSS, and JavaScript.</p>
                 <div class="tech-used">
                   <p>HTML5, CSS3, JavaScript</p>
                 </div>
                 <div class="portfolio-icon work-icon">
                   <a href="#">
                     <i class="bx bx-arrow-back"></i>
-                    <span class="tooltip">預覽</span>
+                    <span class="tooltip">Preview</span>
                   </a>
                   <a href="#">
                     <i class="bx bxl-github"></i>
-                    <span class="tooltip">Github 倉庫</span>
+                    <span class="tooltip">Github Repository</span>
                   </a>
                 </div>
               </div>
             </div>
 
-            <div class="tab-item portfolio-item">
-              <div class="work-img">
-                <img src="images/work2.jpg" alt="作品 2" />
-              </div>
-              <div class="work-info">
-                <h4>前端專案</h4>
-                <p>這是一個範例描述，通常這裡會放專案簡介。</p>
-                <div class="tech-used">
-                  <p>HTML5, CSS3, JavaScript</p>
-                </div>
-                <div class="portfolio-icon work-icon">
-                  <a href="#">
-                    <i class="bx bx-arrow-back"></i>
-                    <span class="tooltip">預覽</span>
-                  </a>
-                  <a href="#">
-                    <i class="bx bxl-github"></i>
-                    <span class="tooltip">Github 倉庫</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-
+            <!-- 作品 2 -->
             <div class="tab-item portfolio-item">
               <div class="work-img">
                 <img src="images/work2.jpg" alt="作品 2" />
@@ -458,29 +574,7 @@
               </div>
             </div>
 
-            <div class="tab-item portfolio-item">
-              <div class="work-img">
-                <img src="images/work2.jpg" alt="作品 2" />
-              </div>
-              <div class="work-info">
-                <h4>前端專案</h4>
-                <p>這是一個範例描述，通常這裡會放專案簡介。</p>
-                <div class="tech-used">
-                  <p>HTML5, CSS3, JavaScript</p>
-                </div>
-                <div class="portfolio-icon work-icon">
-                  <a href="#">
-                    <i class="bx bx-arrow-back"></i>
-                    <span class="tooltip">預覽</span>
-                  </a>
-                  <a href="#">
-                    <i class="bx bxl-github"></i>
-                    <span class="tooltip">Github 倉庫</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-
+            <!-- 作品 3 -->
             <div class="tab-item portfolio-item">
               <div class="work-img">
                 <img src="images/work3.jpg" alt="作品 3" />
@@ -507,6 +601,7 @@
 
           <!-- 能力證明 -->
           <div class="tab-grid portfolio-box certificate">
+            <!-- 能力證明內容保持不變 -->
             <div class="tab-item certificate-item">
               <div class="certificate-icon">
                 <i class="bx bx-certification"></i>
