@@ -1,0 +1,91 @@
+<!--客戶主頁面-->
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>玩具商城 - Smile & Sunshine</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <script src="JS/theme.js"></script>
+    <link rel="stylesheet" href="CSS/index.css" />
+    <script src="JS/index.js" defer></script>
+    <script src="JS/data-manager.js"></script>
+  </head>
+
+  <body class="client-mode">
+    <header class="theme-header">
+      <div class="header-content">
+        <div class="logo">
+          <i class="fas fa-smile"></i>
+          <h1>Smile & Sunshine</h1>
+        </div>
+        <div class="nav-links" id="nav-links"></div>
+      </div>
+    </header>
+
+    <div class="container">
+      <!-- Stats Bar -->
+      <div class="stats-bar">
+        <div class="stat-item">
+          <div class="stat-number" id="total-toys">0</div>
+          <div class="stat-label">總商品數</div>
+        </div>
+
+        <div class="stat-item">
+          <div class="stat-number" id="available-categories">0</div>
+          <div class="stat-label">商品分類</div>
+        </div>
+      </div>
+
+      <!-- Filter Section -->
+      <div class="filter-section">
+        <div class="filter-group">
+          <span class="filter-label">分類篩選:</span>
+          <select id="category-filter" class="filter-select">
+            <option value="">所有分類</option>
+            <option value="educational">教育玩具</option>
+            <option value="outdoor">戶外玩具</option>
+            <option value="creative">創意玩具</option>
+            <option value="electronic">電子玩具</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-label">價格範圍:</span>
+          <select id="price-filter" class="filter-select">
+            <option value="">所有價格</option>
+            <option value="0-100">$100 以下</option>
+            <option value="100-300">$100 - $300</option>
+            <option value="300-500">$300 - $500</option>
+            <option value="500+">$500 以上</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-label">搜尋:</span>
+          <input
+            type="text"
+            id="search-input"
+            class="search-input"
+            placeholder="搜尋玩具名稱..."
+          />
+        </div>
+
+        <button
+          onclick="clearFilters()"
+          class="logout-btn"
+          style="margin-left: auto"
+        >
+          <i class="fas fa-times"></i> 清除篩選
+        </button>
+      </div>
+
+      <div class="toy-grid" id="toy-container"></div>
+    </div>
+  </body>
+</html>

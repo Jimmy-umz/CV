@@ -1,0 +1,527 @@
+<!-- 客戶 自定義頁面   報價功能 -->
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>客製化玩具設計 - Smile & Sunshine Toys</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <script src="JS/theme.js"></script>
+    <link rel="stylesheet" href="CSS/custom-toy-design.css" />
+    <script src="JS/custom-toy-design.js" defer></script>
+  </head>
+  <body class="client-mode">
+    <!-- 頁頭 -->
+    <header class="theme-header">
+      <div class="header-content">
+        <div class="logo">
+          <i class="fas fa-smile"></i>
+          <h1>Smile & Sunshine</h1>
+        </div>
+        <div class="nav-links" id="nav-links">
+          <!-- 導航鏈接會通過 JS 動態生成 -->
+        </div>
+      </div>
+    </header>
+
+    <!-- 麵包屑導航 -->
+    <div class="breadcrumb">
+      <div class="container">
+        <a href="index.html"><i class="fas fa-home"></i> 首頁</a>
+        <i class="fas fa-chevron-right"></i>
+        <span class="current">客製化玩具設計</span>
+      </div>
+    </div>
+
+    <!-- 主內容區 -->
+    <div class="container">
+      <!-- 登入提示 -->
+      <div class="login-prompt" id="login-prompt" style="display: none">
+        <i class="fas fa-info-circle"></i>
+        您尚未登入，請 <a href="login.html">登入</a> 以使用客製化設計功能
+      </div>
+
+      <!-- 客製化設計內容 -->
+      <div
+        class="custom-design-content"
+        id="custom-design-content"
+        style="display: none"
+      >
+        <!-- 頁面標題 -->
+        <div class="page-header">
+          <h1><i class="fas fa-magic"></i> 客製化玩具設計</h1>
+          <p>創造屬於您獨一無二的玩具！選擇樣式、顏色、配件，打造專屬玩具</p>
+        </div>
+
+        <div class="design-layout">
+          <!-- 左側：設計預覽 -->
+          <div class="design-preview">
+            <div class="preview-container">
+              <div class="toy-base" id="toy-base">
+                <!-- 玩具基礎模型 -->
+                <div class="toy-body" id="toy-body">
+                  <div class="toy-face" id="toy-face">
+                    <div class="eyes" id="toy-eyes"></div>
+                    <div class="mouth" id="toy-mouth"></div>
+                  </div>
+                  <div class="toy-accessories" id="toy-accessories"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="preview-controls">
+              <button class="btn-outline" onclick="rotateToy()">
+                <i class="fas fa-sync-alt"></i> 旋轉視角
+              </button>
+              <button class="btn-outline" onclick="resetDesign()">
+                <i class="fas fa-undo"></i> 重設設計
+              </button>
+              <button class="btn-primary" onclick="saveDesign()">
+                <i class="fas fa-save"></i> 儲存設計
+              </button>
+            </div>
+
+            <div class="design-info">
+              <h3>設計資訊</h3>
+              <div class="info-grid">
+                <div class="info-item">
+                  <span class="info-label">設計編號:</span>
+                  <span class="info-value" id="design-id">CD-20240001</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">建立時間:</span>
+                  <span class="info-value" id="design-date">2024-12-19</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">估計價格:</span>
+                  <span class="info-value" id="design-price">$299</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">製作時間:</span>
+                  <span class="info-value" id="production-time"
+                    >7-10 個工作天</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 右側：設計選項 -->
+          <div class="design-options">
+            <div class="options-tabs">
+              <button class="tab-btn active" data-tab="base">基礎樣式</button>
+              <button class="tab-btn" data-tab="colors">顏色配置</button>
+              <button class="tab-btn" data-tab="accessories">配件裝飾</button>
+              <button class="tab-btn" data-tab="personalization">個性化</button>
+            </div>
+
+            <div class="tab-content active" id="base-tab">
+              <h3>選擇玩具類型</h3>
+              <div class="option-grid">
+                <div class="option-card active" data-base="bear">
+                  <div class="option-preview bear-preview"></div>
+                  <div class="option-info">
+                    <h4>泰迪熊</h4>
+                    <p>經典可愛的泰迪熊造型</p>
+                    <span class="option-price">+$0</span>
+                  </div>
+                </div>
+                <div class="option-card" data-base="robot">
+                  <div class="option-preview robot-preview"></div>
+                  <div class="option-info">
+                    <h4>機器人</h4>
+                    <p>未來感十足的機器人設計</p>
+                    <span class="option-price">+$50</span>
+                  </div>
+                </div>
+                <div class="option-card" data-base="dragon">
+                  <div class="option-preview dragon-preview"></div>
+                  <div class="option-info">
+                    <h4>小恐龍</h4>
+                    <p>可愛的恐龍造型</p>
+                    <span class="option-price">+$30</span>
+                  </div>
+                </div>
+                <div class="option-card" data-base="unicorn">
+                  <div class="option-preview unicorn-preview"></div>
+                  <div class="option-info">
+                    <h4>獨角獸</h4>
+                    <p>夢幻的獨角獸設計</p>
+                    <span class="option-price">+$40</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" id="colors-tab">
+              <h3>顏色配置</h3>
+
+              <div class="color-section">
+                <h4>主體顏色</h4>
+                <div class="color-palette">
+                  <div
+                    class="color-option active"
+                    data-color="#FF6B6B"
+                    data-part="body"
+                  ></div>
+                  <div
+                    class="color-option"
+                    data-color="#4ECDC4"
+                    data-part="body"
+                  ></div>
+                  <div
+                    class="color-option"
+                    data-color="#45B7D1"
+                    data-part="body"
+                  ></div>
+                  <div
+                    class="color-option"
+                    data-color="#96CEB4"
+                    data-part="body"
+                  ></div>
+                  <div
+                    class="color-option"
+                    data-color="#FFEAA7"
+                    data-part="body"
+                  ></div>
+                  <div
+                    class="color-option"
+                    data-color="#DDA0DD"
+                    data-part="body"
+                  ></div>
+                </div>
+              </div>
+
+              <div class="color-section">
+                <h4>細節顏色</h4>
+                <div class="color-palette">
+                  <div
+                    class="color-option active"
+                    data-color="#2D3748"
+                    data-part="accent"
+                  ></div>
+                  <div
+                    class="color-option"
+                    data-color="#E53E3E"
+                    data-part="accent"
+                  ></div>
+                  <div
+                    class="color-option"
+                    data-color="#38A169"
+                    data-part="accent"
+                  ></div>
+                  <div
+                    class="color-option"
+                    data-color="#3182CE"
+                    data-part="accent"
+                  ></div>
+                  <div
+                    class="color-option"
+                    data-color="#D69E2E"
+                    data-part="accent"
+                  ></div>
+                  <div
+                    class="color-option"
+                    data-color="#805AD5"
+                    data-part="accent"
+                  ></div>
+                </div>
+              </div>
+
+              <div class="color-section">
+                <h4>自訂顏色</h4>
+                <div class="custom-color">
+                  <input
+                    type="color"
+                    id="custom-color-picker"
+                    value="#FF6B6B"
+                  />
+                  <label for="custom-color-picker">選擇自訂顏色</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" id="accessories-tab">
+              <h3>配件裝飾</h3>
+
+              <div class="accessory-section">
+                <h4>帽子</h4>
+                <div class="accessory-options">
+                  <label class="accessory-option">
+                    <input type="radio" name="hat" value="none" checked />
+                    <div class="accessory-preview no-hat"></div>
+                    <span>無帽子</span>
+                  </label>
+                  <label class="accessory-option">
+                    <input type="radio" name="hat" value="baseball" />
+                    <div class="accessory-preview baseball-hat"></div>
+                    <span>棒球帽 +$20</span>
+                  </label>
+                  <label class="accessory-option">
+                    <input type="radio" name="hat" value="party" />
+                    <div class="accessory-preview party-hat"></div>
+                    <span>派對帽 +$15</span>
+                  </label>
+                  <label class="accessory-option">
+                    <input type="radio" name="hat" value="crown" />
+                    <div class="accessory-preview crown-hat"></div>
+                    <span>皇冠 +$25</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="accessory-section">
+                <h4>服裝</h4>
+                <div class="accessory-options">
+                  <label class="accessory-option">
+                    <input type="radio" name="clothing" value="none" checked />
+                    <div class="accessory-preview no-clothing"></div>
+                    <span>無服裝</span>
+                  </label>
+                  <label class="accessory-option">
+                    <input type="radio" name="clothing" value="t-shirt" />
+                    <div class="accessory-preview t-shirt"></div>
+                    <span>T恤 +$30</span>
+                  </label>
+                  <label class="accessory-option">
+                    <input type="radio" name="clothing" value="dress" />
+                    <div class="accessory-preview dress"></div>
+                    <span>裙子 +$35</span>
+                  </label>
+                  <label class="accessory-option">
+                    <input type="radio" name="clothing" value="superhero" />
+                    <div class="accessory-preview superhero"></div>
+                    <span>超級英雄 +$40</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="accessory-section">
+                <h4>其他配件</h4>
+                <div class="accessory-checkboxes">
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="glasses" value="glasses" />
+                    <span class="checkmark"></span>
+                    <span>眼鏡 +$15</span>
+                  </label>
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="bowtie" value="bowtie" />
+                    <span class="checkmark"></span>
+                    <span>領結 +$10</span>
+                  </label>
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="wings" value="wings" />
+                    <span class="checkmark"></span>
+                    <span>翅膀 +$25</span>
+                  </label>
+                  <label class="checkbox-option">
+                    <input
+                      type="checkbox"
+                      name="magic-wand"
+                      value="magic-wand"
+                    />
+                    <span class="checkmark"></span>
+                    <span>魔法棒 +$20</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" id="personalization-tab">
+              <h3>個性化設定</h3>
+
+              <div class="personalization-section">
+                <h4>表情設定</h4>
+                <div class="expression-options">
+                  <label class="expression-option">
+                    <input
+                      type="radio"
+                      name="expression"
+                      value="happy"
+                      checked
+                    />
+                    <div class="expression-preview happy-face"></div>
+                    <span>開心</span>
+                  </label>
+                  <label class="expression-option">
+                    <input type="radio" name="expression" value="wink" />
+                    <div class="expression-preview wink-face"></div>
+                    <span>眨眼</span>
+                  </label>
+                  <label class="expression-option">
+                    <input type="radio" name="expression" value="surprised" />
+                    <div class="expression-preview surprised-face"></div>
+                    <span>驚訝</span>
+                  </label>
+                  <label class="expression-option">
+                    <input type="radio" name="expression" value="sleepy" />
+                    <div class="expression-preview sleepy-face"></div>
+                    <span>想睡</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="personalization-section">
+                <h4>個性化文字</h4>
+                <div class="text-options">
+                  <div class="form-group">
+                    <label for="toy-name">玩具名字</label>
+                    <input
+                      type="text"
+                      id="toy-name"
+                      placeholder="例如: 小寶的熊熊"
+                      maxlength="20"
+                    />
+                    <span class="char-count">0/20</span>
+                  </div>
+                  <div class="form-group">
+                    <label for="special-message">特別訊息</label>
+                    <textarea
+                      id="special-message"
+                      placeholder="輸入想要刻印的特別訊息..."
+                      maxlength="100"
+                    ></textarea>
+                    <span class="char-count">0/100</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="personalization-section">
+                <h4>尺寸選擇</h4>
+                <div class="size-options">
+                  <label class="size-option">
+                    <input type="radio" name="size" value="small" checked />
+                    <div class="size-info">
+                      <span class="size-name">小 (20cm)</span>
+                      <span class="size-price">$299</span>
+                    </div>
+                  </label>
+                  <label class="size-option">
+                    <input type="radio" name="size" value="medium" />
+                    <div class="size-info">
+                      <span class="size-name">中 (30cm)</span>
+                      <span class="size-price">$399</span>
+                    </div>
+                  </label>
+                  <label class="size-option">
+                    <input type="radio" name="size" value="large" />
+                    <div class="size-info">
+                      <span class="size-name">大 (40cm)</span>
+                      <span class="size-price">$499</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 設計摘要 -->
+        <div class="design-summary">
+          <div class="summary-card">
+            <h3>設計摘要</h3>
+            <div class="summary-content">
+              <div class="summary-item">
+                <span class="item-label">基礎樣式:</span>
+                <span class="item-value" id="summary-base">泰迪熊</span>
+              </div>
+              <div class="summary-item">
+                <span class="item-label">主體顏色:</span>
+                <span class="item-value" id="summary-body-color">粉紅色</span>
+              </div>
+              <div class="summary-item">
+                <span class="item-label">配件:</span>
+                <span class="item-value" id="summary-accessories">無</span>
+              </div>
+              <div class="summary-item">
+                <span class="item-label">個性化:</span>
+                <span class="item-value" id="summary-personalization">無</span>
+              </div>
+              <div class="summary-item">
+                <span class="item-label">尺寸:</span>
+                <span class="item-value" id="summary-size">小 (20cm)</span>
+              </div>
+            </div>
+            <div class="summary-total">
+              <span class="total-label">總計:</span>
+              <span class="total-amount" id="summary-total">$299</span>
+            </div>
+            <div class="summary-actions">
+              <button class="btn-outline" onclick="shareDesign()">
+                <i class="fas fa-share-alt"></i> 分享設計
+              </button>
+              <button class="btn-primary" onclick="requestQuotation()">
+                <i class="fas fa-file-invoice-dollar"></i> 請求報價
+              </button>
+              <button class="btn-success" onclick="addToCart()">
+                <i class="fas fa-shopping-cart"></i> 加入購物車
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 設計保存成功模態框 -->
+    <div class="modal" id="save-success-modal">
+      <div class="modal-content">
+        <div class="modal-icon success">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <h2>設計已保存！</h2>
+        <p>您的客製化玩具設計已成功保存到您的設計庫</p>
+        <div class="modal-actions">
+          <button class="btn-outline" onclick="closeSaveModal()">
+            繼續設計
+          </button>
+          <button class="btn-primary" onclick="viewMyDesigns()">
+            查看我的設計
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 分享設計模態框 -->
+    <div class="modal" id="share-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>分享設計</h3>
+          <button class="close-modal" onclick="closeShareModal()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="share-options">
+            <button class="share-option" onclick="shareToSocial('facebook')">
+              <i class="fab fa-facebook"></i>
+              <span>Facebook</span>
+            </button>
+            <button class="share-option" onclick="shareToSocial('twitter')">
+              <i class="fab fa-twitter"></i>
+              <span>Twitter</span>
+            </button>
+            <button class="share-option" onclick="shareToSocial('instagram')">
+              <i class="fab fa-instagram"></i>
+              <span>Instagram</span>
+            </button>
+            <button class="share-option" onclick="copyDesignLink()">
+              <i class="fas fa-link"></i>
+              <span>複製連結</span>
+            </button>
+          </div>
+          <div class="share-preview">
+            <p>設計連結:</p>
+            <div class="link-box" id="design-link">
+              https://smilesunshine.com/design/CD-20240001
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

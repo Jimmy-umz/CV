@@ -1,0 +1,473 @@
+<!--  員工  訂單管理
+ -->
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>訂單管理 - Smile & Sunshine Toys</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="CSS/order-management.css" />
+  </head>
+  <body class="staff-mode">
+    <!-- 頁頭 -->
+    <header class="theme-header">
+      <div class="header-content">
+        <div class="logo">
+          <i class="fas fa-smile"></i>
+          <h1>Smile & Sunshine </h1>
+        </div>
+        <div class="nav-links" id="nav-links">
+          <!-- 導航鏈接會通過 JS 動態生成 -->
+        </div>
+      </div>
+    </header>
+
+    <!-- 主內容區 -->
+    <div class="dashboard-container">
+      <!-- 側邊欄 -->
+      <div class="sidebar">
+        <div class="staff-info">
+          <div class="staff-avatar">
+            <i class="fas fa-user-tie"></i>
+          </div>
+          <div class="staff-details">
+            <h3 id="staff-name">員工名稱</h3>
+            <p>銷售經理</p>
+            <div class="staff-status">
+              <i class="fas fa-circle"></i>
+              <span>在線</span>
+            </div>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="sales-dashboard.html" class="nav-item">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>儀表板</span>
+          </a>
+          <a href="product-management.html" class="nav-item">
+            <i class="fas fa-boxes"></i>
+            <span>商品管理</span>
+          </a>
+          <a href="order-management.html" class="nav-item active">
+            <i class="fas fa-clipboard-list"></i>
+            <span>訂單管理</span>
+          </a>
+          <a href="customer-management.html" class="nav-item">
+            <i class="fas fa-users"></i>
+            <span>客戶管理</span>
+          </a>
+          <a href="quotation-management.html" class="nav-item">
+            <i class="fas fa-file-invoice-dollar"></i>
+            <span>報價管理</span>
+          </a>
+          <a href="staff-profile.html" class="nav-item">
+            <i class="fas fa-user-cog"></i>
+            <span>員工中心</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="quick-stats">
+            <div class="quick-stat">
+              <i class="fas fa-shopping-cart"></i>
+              <div>
+                <span class="stat-number" id="pending-orders">0</span>
+                <span class="stat-label">待處理</span>
+              </div>
+            </div>
+            <div class="quick-stat">
+              <i class="fas fa-truck"></i>
+              <div>
+                <span class="stat-number" id="shipping-orders">0</span>
+                <span class="stat-label">配送中</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 主內容 -->
+      <div class="main-content">
+        <!-- 頁面標題和快速操作 -->
+        <div class="page-header">
+          <div class="header-title">
+            <h1><i class="fas fa-clipboard-list"></i> 訂單管理</h1>
+            <p>處理訂單出貨、退換貨和客戶服務</p>
+          </div>
+          <div class="header-actions">
+            <button class="btn-primary" onclick="exportOrders()">
+              <i class="fas fa-download"></i> 匯出報表
+            </button>
+            <button class="btn-secondary" onclick="refreshData()">
+              <i class="fas fa-sync-alt"></i> 重新整理
+            </button>
+          </div>
+        </div>
+
+        <!-- KPI 指標卡片 -->
+        <div class="kpi-cards">
+          <div class="kpi-card revenue">
+            <div class="kpi-icon">
+              <i class="fas fa-shopping-cart"></i>
+            </div>
+            <div class="kpi-content">
+              <div class="kpi-value" id="total-orders">0</div>
+              <div class="kpi-label">總訂單數</div>
+              <div class="kpi-trend positive">
+                <i class="fas fa-arrow-up"></i>
+                <span>12.5% 較上期</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="kpi-card orders">
+            <div class="kpi-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="kpi-content">
+              <div class="kpi-value" id="pending-count">0</div>
+              <div class="kpi-label">待處理訂單</div>
+              <div class="kpi-trend negative">
+                <i class="fas fa-arrow-up"></i>
+                <span>3.2% 較上期</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="kpi-card customers">
+            <div class="kpi-icon">
+              <i class="fas fa-truck"></i>
+            </div>
+            <div class="kpi-content">
+              <div class="kpi-value" id="shipping-count">0</div>
+              <div class="kpi-label">配送中訂單</div>
+              <div class="kpi-trend positive">
+                <i class="fas fa-arrow-up"></i>
+                <span>8.7% 較上期</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="kpi-card conversion">
+            <div class="kpi-icon">
+              <i class="fas fa-exchange-alt"></i>
+            </div>
+            <div class="kpi-content">
+              <div class="kpi-value" id="return-count">0</div>
+              <div class="kpi-label">退換貨申請</div>
+              <div class="kpi-trend negative">
+                <i class="fas fa-arrow-up"></i>
+                <span>2.1% 較上期</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 搜索和篩選 -->
+        <div class="search-filter-bar">
+          <div class="search-box">
+            <i class="fas fa-search search-icon"></i>
+            <input
+              type="text"
+              id="order-search"
+              class="search-input"
+              placeholder="搜尋訂單編號或客戶名稱..."
+            />
+          </div>
+          <select id="status-filter" class="filter-select">
+            <option value="">所有狀態</option>
+            <option value="pending">待處理</option>
+            <option value="confirmed">已確認</option>
+            <option value="processing">處理中</option>
+            <option value="shipped">已發貨</option>
+            <option value="delivered">已送達</option>
+            <option value="cancelled">已取消</option>
+          </select>
+          <select id="date-filter" class="filter-select">
+            <option value="">所有時間</option>
+            <option value="today">今天</option>
+            <option value="week">本週</option>
+            <option value="month">本月</option>
+          </select>
+          <select id="payment-filter" class="filter-select">
+            <option value="">付款狀態</option>
+            <option value="paid">已付款</option>
+            <option value="pending">待付款</option>
+            <option value="failed">付款失敗</option>
+          </select>
+        </div>
+
+        <!-- 訂單列表 -->
+        <div class="table-card">
+          <div class="table-header">
+            <h3>訂單列表</h3>
+            <div class="table-actions">
+              <span id="order-count">共 0 筆訂單</span>
+              <button class="btn-secondary" onclick="batchProcess()">
+                <i class="fas fa-cogs"></i> 批量處理
+              </button>
+            </div>
+          </div>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>
+                    <input
+                      type="checkbox"
+                      id="select-all"
+                      onchange="toggleSelectAll()"
+                    />
+                  </th>
+                  <th>訂單編號</th>
+                  <th>客戶資訊</th>
+                  <th>商品</th>
+                  <th>金額</th>
+                  <th>狀態</th>
+                  <th>付款</th>
+                  <th>日期</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody id="orders-table">
+                <!-- 訂單數據會通過 JS 動態生成 -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 退換貨管理 -->
+        <div class="table-card">
+          <div class="table-header">
+            <h3>退換貨申請</h3>
+            <div class="table-actions">
+              <span id="return-count-badge">0 個待處理申請</span>
+            </div>
+          </div>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>申請編號</th>
+                  <th>原訂單</th>
+                  <th>客戶</th>
+                  <th>商品</th>
+                  <th>申請類型</th>
+                  <th>原因</th>
+                  <th>狀態</th>
+                  <th>申請日期</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody id="returns-table">
+                <!-- 退換貨數據會通過 JS 動態生成 -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 訂單詳情模態框 -->
+    <div class="modal" id="order-detail-modal">
+      <div class="modal-content large">
+        <div class="modal-header">
+          <h3 id="order-detail-title">訂單詳情</h3>
+          <button class="close-modal" onclick="closeOrderModal()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="order-detail-content">
+            <!-- 訂單詳情內容會通過 JS 動態生成 -->
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="btn-secondary" onclick="closeOrderModal()">
+            關閉
+          </button>
+          <button
+            class="btn-primary"
+            id="order-action-btn"
+            onclick="processOrderAction()"
+          >
+            <i class="fas fa-cog"></i> 處理訂單
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 出貨模態框 -->
+    <div class="modal" id="shipping-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>出貨處理</h3>
+          <button class="close-modal" onclick="closeShippingModal()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="shipping-form" class="form-grid">
+            <div class="form-group">
+              <label class="form-label">訂單編號</label>
+              <input
+                type="text"
+                id="shipping-order-id"
+                class="form-input"
+                readonly
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">物流公司</label>
+              <select id="shipping-company" class="form-select" required>
+                <option value="">請選擇物流公司</option>
+                <option value="blackcat">黑貓宅急便</option>
+                <option value="post">中華郵政</option>
+                <option value="kerry">嘉里大榮</option>
+                <option value="other">其他</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">運單號碼</label>
+              <input
+                type="text"
+                id="tracking-number"
+                class="form-input"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">預計送達</label>
+              <input
+                type="date"
+                id="estimated-delivery"
+                class="form-input"
+                required
+              />
+            </div>
+            <div class="form-group full-width">
+              <label class="form-label">備註</label>
+              <textarea
+                id="shipping-notes"
+                class="form-textarea"
+                rows="3"
+                placeholder="可選填出貨備註..."
+              ></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-actions">
+          <button class="btn-secondary" onclick="closeShippingModal()">
+            取消
+          </button>
+          <button class="btn-primary" onclick="confirmShipping()">
+            <i class="fas fa-check"></i> 確認出貨
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 退換貨處理模態框 -->
+    <div class="modal" id="return-modal">
+      <div class="modal-content large">
+        <div class="modal-header">
+          <h3 id="return-modal-title">退換貨處理</h3>
+          <button class="close-modal" onclick="closeReturnModal()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="return-detail-content">
+            <!-- 退換貨詳情內容會通過 JS 動態生成 -->
+          </div>
+          <div class="return-action-section">
+            <h4><i class="fas fa-cog"></i> 處理操作</h4>
+            <form id="return-action-form" class="form-grid">
+              <div class="form-group">
+                <label class="form-label">處理方式</label>
+                <select id="return-action" class="form-select" required>
+                  <option value="">請選擇處理方式</option>
+                  <option value="refund">退款</option>
+                  <option value="exchange">換貨</option>
+                  <option value="reject">拒絕申請</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">退款金額</label>
+                <input
+                  type="number"
+                  id="refund-amount"
+                  class="form-input"
+                  min="0"
+                  step="0.01"
+                />
+              </div>
+              <div class="form-group full-width">
+                <label class="form-label">處理說明</label>
+                <textarea
+                  id="return-notes"
+                  class="form-textarea"
+                  rows="3"
+                  required
+                ></textarea>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="btn-secondary" onclick="closeReturnModal()">
+            取消
+          </button>
+          <button class="btn-primary" onclick="processReturn()">
+            <i class="fas fa-check"></i> 確認處理
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 批量處理模態框 -->
+    <div class="modal" id="batch-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>批量處理訂單</h3>
+          <button class="close-modal" onclick="closeBatchModal()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">選擇操作</label>
+            <select id="batch-action" class="form-select" required>
+              <option value="">請選擇批量操作</option>
+              <option value="confirm">確認訂單</option>
+              <option value="ship">標記為已發貨</option>
+              <option value="complete">標記為已完成</option>
+              <option value="cancel">取消訂單</option>
+            </select>
+          </div>
+          <div class="selected-count">
+            <i class="fas fa-info-circle"></i>
+            已選擇 <span id="batch-count">0</span> 筆訂單
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="btn-secondary" onclick="closeBatchModal()">
+            取消
+          </button>
+          <button class="btn-primary" onclick="confirmBatchAction()">
+            <i class="fas fa-check"></i> 確認執行
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="JS/order-management.js"></script>
+  </body>
+</html>

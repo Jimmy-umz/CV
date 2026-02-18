@@ -1,0 +1,375 @@
+<!-- 員工  商品管理頁面 -->
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>商品管理 - Smile & Sunshine Toys</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <!-- 在head部分修改为 -->
+    <link rel="stylesheet" href="CSS/sales-dashboard.css" />
+    <link rel="stylesheet" href="CSS/product-management.css" />
+    <script src="JS/data-manager.js"></script>
+    <script src="JS/theme.js"></script>
+    <script src="JS/product-management.js"></script>
+  </head>
+  <body class="staff-mode">
+    <!-- 頁頭 -->
+    <header class="theme-header">
+      <div class="header-content">
+        <div class="logo">
+          <i class="fas fa-smile"></i>
+          <h1>Smile & Sunshine</h1>
+        </div>
+        <div class="nav-links" id="nav-links">
+          <!-- 導航鏈接會通過 JS 動態生成 -->
+        </div>
+      </div>
+    </header>
+
+    <!-- 主內容區 -->
+    <div class="dashboard-container">
+      <!-- 側邊欄 -->
+      <div class="sidebar">
+        <div class="staff-info">
+          <div class="staff-avatar">
+            <i class="fas fa-user-tie"></i>
+          </div>
+          <div class="staff-details">
+            <h3 id="staff-name">員工名稱</h3>
+            <p>銷售經理</p>
+            <div class="staff-status">
+              <i class="fas fa-circle"></i>
+              <span>在線</span>
+            </div>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="sales-dashboard.html" class="nav-item">
+            <i class="fas fa-tachometer-alt"></i>
+            <span>儀表板</span>
+          </a>
+          <a href="product-management.html" class="nav-item active">
+            <i class="fas fa-boxes"></i>
+            <span>商品管理</span>
+          </a>
+          <a href="order-management.html" class="nav-item">
+            <i class="fas fa-clipboard-list"></i>
+            <span>訂單管理</span>
+          </a>
+          <a href="customer-management.html" class="nav-item">
+            <i class="fas fa-users"></i>
+            <span>客戶管理</span>
+          </a>
+          <a href="quotation-management.html" class="nav-item">
+            <i class="fas fa-file-invoice-dollar"></i>
+            <span>報價管理</span>
+          </a>
+          <a href="staff-profile.html" class="nav-item">
+            <i class="fas fa-user-cog"></i>
+            <span>員工中心</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="quick-stats">
+            <div class="quick-stat">
+              <i class="fas fa-boxes"></i>
+              <div>
+                <span class="stat-number" id="total-products">0</span>
+                <span class="stat-label">總商品數</span>
+              </div>
+            </div>
+            <div class="quick-stat">
+              <i class="fas fa-exclamation-triangle"></i>
+              <div>
+                <span class="stat-number" id="low-stock-count">0</span>
+                <span class="stat-label">低庫存</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 主內容 -->
+      <div class="main-content">
+        <!-- 頁面標題和快速操作 -->
+        <div class="page-header">
+          <div class="header-title">
+            <h1><i class="fas fa-boxes"></i> 商品管理</h1>
+            <p>管理商品上架、編輯、下架和分類</p>
+          </div>
+          <div class="header-actions">
+            <button class="btn-primary" onclick="openProductModal()">
+              <i class="fas fa-plus"></i> 新增商品
+            </button>
+            <button class="btn-secondary" onclick="refreshData()">
+              <i class="fas fa-sync-alt"></i> 重新整理
+            </button>
+          </div>
+        </div>
+
+        <!-- 搜索和篩選 -->
+        <div class="search-filter-bar">
+          <div class="search-box">
+            <i class="fas fa-search search-icon"></i>
+            <input
+              type="text"
+              id="product-search"
+              class="search-input"
+              placeholder="搜尋商品名稱或編號..."
+            />
+          </div>
+          <select id="category-filter" class="filter-select">
+            <option value="">所有分類</option>
+          </select>
+          <select id="status-filter" class="filter-select">
+            <option value="">所有狀態</option>
+            <option value="active">已上架</option>
+            <option value="inactive">已下架</option>
+          </select>
+          <select id="stock-filter" class="filter-select">
+            <option value="">庫存狀態</option>
+            <option value="low">低庫存</option>
+            <option value="out">缺貨</option>
+            <option value="normal">庫存正常</option>
+          </select>
+        </div>
+
+        <!-- 商品列表 -->
+        <div class="table-card">
+          <div class="table-header">
+            <h3>商品列表</h3>
+            <div class="table-actions">
+              <span id="product-count">共 0 件商品</span>
+            </div>
+          </div>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>商品編號</th>
+                  <th>商品名稱</th>
+                  <th>分類</th>
+                  <th>價格</th>
+                  <th>庫存</th>
+                  <th>狀態</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody id="products-table">
+                <!-- 商品數據會通過 JS 動態生成 -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 分類管理 -->
+        <div class="table-card">
+          <div class="table-header">
+            <h3>分類管理</h3>
+            <button class="btn-primary" onclick="openCategoryModal()">
+              <i class="fas fa-plus"></i> 新增分類
+            </button>
+          </div>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>分類名稱</th>
+                  <th>商品數量</th>
+                  <th>狀態</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody id="categories-table">
+                <!-- 分類數據會通過 JS 動態生成 -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 商品編輯模態框 -->
+    <div class="modal" id="product-modal">
+      <div class="modal-content large">
+        <div class="modal-header">
+          <h3 id="product-modal-title">新增商品</h3>
+          <button class="close-modal" onclick="closeProductModal()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="product-form" class="form-grid">
+            <div class="form-group">
+              <label for="product-name" class="form-label">商品名稱</label>
+              <input
+                type="text"
+                id="product-name"
+                class="form-input"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="product-category" class="form-label">商品分類</label>
+              <select id="product-category" class="form-select" required>
+                <option value="">請選擇分類</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="product-price" class="form-label">價格</label>
+              <input
+                type="number"
+                id="product-price"
+                class="form-input"
+                min="0"
+                step="0.01"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="product-stock" class="form-label">庫存數量</label>
+              <input
+                type="number"
+                id="product-stock"
+                class="form-input"
+                min="0"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="product-sku" class="form-label">商品編號</label>
+              <input type="text" id="product-sku" class="form-input" required />
+            </div>
+            <div class="form-group">
+              <label for="product-status" class="form-label">狀態</label>
+              <select id="product-status" class="form-select" required>
+                <option value="active">已上架</option>
+                <option value="inactive">已下架</option>
+              </select>
+            </div>
+            <div class="form-group full-width">
+              <label for="product-description" class="form-label"
+                >商品描述</label
+              >
+              <textarea
+                id="product-description"
+                class="form-textarea"
+                rows="4"
+              ></textarea>
+            </div>
+            <div class="form-group full-width">
+              <label class="form-label">商品圖片</label>
+              <div
+                class="image-upload"
+                onclick="document.getElementById('product-image').click()"
+              >
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>點擊上傳商品圖片</p>
+                <input
+                  type="file"
+                  id="product-image"
+                  accept="image/*"
+                  style="display: none"
+                  onchange="previewImage(this)"
+                />
+              </div>
+              <div class="image-preview" id="image-preview">
+                <img src="" alt="預覽圖片" class="preview-image" />
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-actions">
+          <button class="btn-secondary" onclick="closeProductModal()">
+            取消
+          </button>
+          <button class="btn-primary" onclick="saveProduct()">
+            <i class="fas fa-save"></i> 儲存商品
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 分類編輯模態框 -->
+    <div class="modal" id="category-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="category-modal-title">新增分類</h3>
+          <button class="close-modal" onclick="closeCategoryModal()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="category-form">
+            <div class="form-group">
+              <label for="category-name" class="form-label">分類名稱</label>
+              <input
+                type="text"
+                id="category-name"
+                class="form-input"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="category-icon" class="form-label">分類圖標</label>
+              <select id="category-icon" class="form-select" required>
+                <option value="robot">機器人</option>
+                <option value="cubes">積木</option>
+                <option value="car">汽車</option>
+                <option value="palette">繪畫</option>
+                <option value="binoculars">探險</option>
+                <option value="flask">科學</option>
+                <option value="puzzle-piece">拼圖</option>
+                <option value="gamepad">電子</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="category-status" class="form-label">狀態</label>
+              <select id="category-status" class="form-select" required>
+                <option value="active">啟用</option>
+                <option value="inactive">停用</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-actions">
+          <button class="btn-secondary" onclick="closeCategoryModal()">
+            取消
+          </button>
+          <button class="btn-primary" onclick="saveCategory()">
+            <i class="fas fa-save"></i> 儲存分類
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 確認刪除模態框 -->
+    <div class="modal" id="confirm-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="confirm-title">確認操作</h3>
+          <button class="close-modal" onclick="closeConfirmModal()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="confirm-message">您確定要執行此操作嗎？</p>
+        </div>
+        <div class="modal-actions">
+          <button class="btn-secondary" onclick="closeConfirmModal()">
+            取消
+          </button>
+          <button class="btn-primary" id="confirm-action-btn">確認</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

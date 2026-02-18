@@ -1,0 +1,530 @@
+<!--客戶 個人資料頁面-->
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>個人中心 - Smile & Sunshine Toys</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <script src="JS/theme.js"></script>
+    <link rel="stylesheet" href="CSS/customer-profile.css" />
+    <script src="JS/customer-profile.js" defer></script>
+  </head>
+  <body class="client-mode">
+    <!-- 頁頭 -->
+    <header class="theme-header">
+      <div class="header-content">
+        <div class="logo">
+          <i class="fas fa-smile"></i>
+          <h1>Smile & Sunshine</h1>
+        </div>
+        <div class="nav-links" id="nav-links">
+          <!-- 導航鏈接會通過 JS 動態生成 -->
+        </div>
+      </div>
+    </header>
+
+    <!-- 麵包屑導航 -->
+    <div class="breadcrumb">
+      <div class="container">
+        <a href="index.html"><i class="fas fa-home"></i> 首頁</a>
+        <i class="fas fa-chevron-right"></i>
+        <span class="current">個人中心</span>
+      </div>
+    </div>
+
+    <!-- 主內容區 -->
+    <div class="container">
+      <!-- 登入提示 -->
+      <div class="login-prompt" id="login-prompt" style="display: none">
+        <i class="fas fa-info-circle"></i>
+        您尚未登入，請 <a href="login.html">登入</a> 以查看個人資料
+      </div>
+
+      <!-- 個人資料內容 -->
+      <div class="profile-content" id="profile-content" style="display: none">
+        <div class="profile-layout">
+          <!-- 左側：導航選單 -->
+          <div class="profile-sidebar">
+            <div class="user-card">
+              <div class="user-avatar">
+                <i class="fas fa-user-circle"></i>
+              </div>
+              <div class="user-info">
+                <h3 id="user-name">載入中...</h3>
+                <p id="user-email">載入中...</p>
+                <div class="member-badge">
+                  <i class="fas fa-crown"></i>
+                  <span>黃金會員</span>
+                </div>
+              </div>
+            </div>
+
+            <nav class="profile-nav">
+              <a
+                href="#personal-info"
+                class="nav-item active"
+                data-tab="personal-info"
+              >
+                <i class="fas fa-user"></i>
+                <span>個人資料</span>
+              </a>
+              <a
+                href="#order-history"
+                class="nav-item"
+                data-tab="order-history"
+              >
+                <i class="fas fa-clipboard-list"></i>
+                <span>訂單歷史</span>
+                <span class="badge" id="order-count">0</span>
+              </a>
+              <a href="#wishlist" class="nav-item" data-tab="wishlist">
+                <i class="fas fa-heart"></i>
+                <span>願望清單</span>
+                <span class="badge" id="wishlist-count">0</span>
+              </a>
+              <a href="#address-book" class="nav-item" data-tab="address-book">
+                <i class="fas fa-address-book"></i>
+                <span>地址簿</span>
+              </a>
+              <a href="#security" class="nav-item" data-tab="security">
+                <i class="fas fa-shield-alt"></i>
+                <span>帳戶安全</span>
+              </a>
+              <a href="#preferences" class="nav-item" data-tab="preferences">
+                <i class="fas fa-cog"></i>
+                <span>偏好設定</span>
+              </a>
+            </nav>
+
+            <div class="sidebar-footer">
+              <button class="logout-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i>
+                登出帳戶
+              </button>
+            </div>
+          </div>
+
+          <!-- 右側：內容區域 -->
+          <div class="profile-main">
+            <!-- 個人資料頁籤 -->
+            <div class="tab-content active" id="personal-info">
+              <div class="tab-header">
+                <h2><i class="fas fa-user"></i> 個人資料</h2>
+                <p>管理您的個人資訊和聯繫方式</p>
+              </div>
+
+              <form class="profile-form" id="personal-info-form">
+                <div class="form-section">
+                  <h3>基本資訊</h3>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="profile-name">姓名</label>
+                      <input
+                        type="text"
+                        id="profile-name"
+                        name="name"
+                        required
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="profile-phone">電話</label>
+                      <input
+                        type="tel"
+                        id="profile-phone"
+                        name="phone"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="profile-email">電子郵件</label>
+                      <input
+                        type="email"
+                        id="profile-email"
+                        name="email"
+                        required
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="profile-birthday">生日</label>
+                      <input
+                        type="date"
+                        id="profile-birthday"
+                        name="birthday"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-section">
+                  <h3>個人偏好</h3>
+                  <div class="preference-options">
+                    <label class="preference-option">
+                      <input
+                        type="checkbox"
+                        id="pref-newsletter"
+                        name="newsletter"
+                      />
+                      <span class="checkmark"></span>
+                      <span class="option-text">訂閱電子報和促銷資訊</span>
+                    </label>
+                    <label class="preference-option">
+                      <input type="checkbox" id="pref-sms" name="sms" />
+                      <span class="checkmark"></span>
+                      <span class="option-text">接收簡訊通知</span>
+                    </label>
+                    <label class="preference-option">
+                      <input
+                        type="checkbox"
+                        id="pref-product-updates"
+                        name="product-updates"
+                      />
+                      <span class="checkmark"></span>
+                      <span class="option-text">接收新產品通知</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-actions">
+                  <button
+                    type="button"
+                    class="btn-secondary"
+                    onclick="resetForm()"
+                  >
+                    重設
+                  </button>
+                  <button type="submit" class="btn-primary">
+                    <i class="fas fa-save"></i> 儲存變更
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- 訂單歷史頁籤 -->
+            <div class="tab-content" id="order-history">
+              <div class="tab-header">
+                <h2><i class="fas fa-clipboard-list"></i> 訂單歷史</h2>
+                <p>查看您的所有訂單記錄</p>
+              </div>
+
+              <div class="orders-overview">
+                <div class="stats-cards">
+                  <div class="stat-card">
+                    <div class="stat-icon total">
+                      <i class="fas fa-boxes"></i>
+                    </div>
+                    <div class="stat-info">
+                      <div class="stat-number" id="total-orders">0</div>
+                      <div class="stat-label">總訂單數</div>
+                    </div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="stat-icon spent">
+                      <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="stat-info">
+                      <div class="stat-number" id="total-spent">$0</div>
+                      <div class="stat-label">總消費金額</div>
+                    </div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="stat-icon average">
+                      <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-info">
+                      <div class="stat-number" id="average-order">$0</div>
+                      <div class="stat-label">平均訂單金額</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="recent-orders">
+                  <h3>最近訂單</h3>
+                  <div class="orders-list" id="recent-orders-list">
+                    <!-- 最近訂單會通過 JS 動態生成 -->
+                  </div>
+                  <div class="view-all">
+                    <a href="order-tracking.html" class="btn-outline">
+                      <i class="fas fa-list"></i> 查看所有訂單
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 願望清單頁籤 -->
+            <div class="tab-content" id="wishlist">
+              <div class="tab-header">
+                <h2><i class="fas fa-heart"></i> 我的願望清單</h2>
+                <p>管理您喜歡的商品</p>
+              </div>
+
+              <div class="wishlist-items" id="profile-wishlist">
+                <!-- 願望清單商品會通過 JS 動態生成 -->
+              </div>
+
+              <div class="empty-wishlist" id="empty-profile-wishlist">
+                <div class="empty-icon">
+                  <i class="fas fa-heart"></i>
+                </div>
+                <h3>願望清單是空的</h3>
+                <p>將喜歡的商品加入願望清單，方便以後查看</p>
+                <a href="index.html" class="btn-primary">
+                  <i class="fas fa-shopping-bag"></i> 去逛逛商品
+                </a>
+              </div>
+            </div>
+
+            <!-- 地址簿頁籤 -->
+            <div class="tab-content" id="address-book">
+              <div class="tab-header">
+                <h2><i class="fas fa-address-book"></i> 地址簿</h2>
+                <p>管理您的送貨地址</p>
+              </div>
+
+              <div class="addresses-list" id="addresses-list">
+                <!-- 地址會通過 JS 動態生成 -->
+              </div>
+
+              <button class="btn-primary" onclick="showAddAddressForm()">
+                <i class="fas fa-plus"></i> 新增地址
+              </button>
+            </div>
+
+            <!-- 帳戶安全頁籤 -->
+            <div class="tab-content" id="security">
+              <div class="tab-header">
+                <h2><i class="fas fa-shield-alt"></i> 帳戶安全</h2>
+                <p>保護您的帳戶安全</p>
+              </div>
+
+              <div class="security-settings">
+                <div class="security-item">
+                  <div class="security-info">
+                    <h4>密碼</h4>
+                    <p>
+                      最後更改時間:
+                      <span id="last-password-change">從未更改</span>
+                    </p>
+                  </div>
+                  <button
+                    class="btn-outline"
+                    onclick="showChangePasswordForm()"
+                  >
+                    更改密碼
+                  </button>
+                </div>
+
+                <div class="security-item">
+                  <div class="security-info">
+                    <h4>兩步驟驗證</h4>
+                    <p>為您的帳戶增加額外安全保護</p>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" id="two-factor-auth" />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+
+                <div class="security-item">
+                  <div class="security-info">
+                    <h4>登入活動</h4>
+                    <p>查看最近的帳戶登入記錄</p>
+                  </div>
+                  <button class="btn-outline" onclick="showLoginActivity()">
+                    查看記錄
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 偏好設定頁籤 -->
+            <div class="tab-content" id="preferences">
+              <div class="tab-header">
+                <h2><i class="fas fa-cog"></i> 偏好設定</h2>
+                <p>自訂您的使用體驗</p>
+              </div>
+
+              <div class="preference-settings">
+                <div class="preference-group">
+                  <h3>通知設定</h3>
+                  <div class="preference-options">
+                    <label class="preference-option">
+                      <input type="checkbox" id="notif-email" checked />
+                      <span class="checkmark"></span>
+                      <span class="option-text">電子郵件通知</span>
+                    </label>
+                    <label class="preference-option">
+                      <input type="checkbox" id="notif-sms" />
+                      <span class="checkmark"></span>
+                      <span class="option-text">簡訊通知</span>
+                    </label>
+                    <label class="preference-option">
+                      <input type="checkbox" id="notif-push" checked />
+                      <span class="checkmark"></span>
+                      <span class="option-text">推播通知</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="preference-group">
+                  <h3>語言和地區</h3>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="language">語言</label>
+                      <select id="language">
+                        <option value="zh-TW" selected>繁體中文</option>
+                        <option value="en-US">English</option>
+                        <option value="ja-JP">日本語</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="currency">貨幣</label>
+                      <select id="currency">
+                        <option value="TWD" selected>新台幣 (TWD)</option>
+                        <option value="USD">美元 (USD)</option>
+                        <option value="JPY">日圓 (JPY)</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="preference-group">
+                  <h3>主題設定</h3>
+                  <div class="theme-options">
+                    <label class="theme-option">
+                      <input type="radio" name="theme" value="client" checked />
+                      <div class="theme-preview client-theme">
+                        <div class="theme-colors">
+                          <span style="background: #667eea"></span>
+                          <span style="background: #764ba2"></span>
+                        </div>
+                        <span class="theme-name">客戶主題</span>
+                      </div>
+                    </label>
+                    <label class="theme-option">
+                      <input type="radio" name="theme" value="staff" />
+                      <div class="theme-preview staff-theme">
+                        <div class="theme-colors">
+                          <span style="background: #b684e2"></span>
+                          <span style="background: #a928e6"></span>
+                        </div>
+                        <span class="theme-name">員工主題</span>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 新增地址模態框 -->
+    <div class="modal" id="add-address-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>新增送貨地址</h3>
+          <button class="close-modal" onclick="closeAddAddressModal()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="add-address-form">
+            <div class="form-group">
+              <label for="address-name">地址名稱</label>
+              <input
+                type="text"
+                id="address-name"
+                placeholder="例如: 家裡、公司"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="address-recipient">收貨人</label>
+              <input type="text" id="address-recipient" required />
+            </div>
+            <div class="form-group">
+              <label for="address-phone">電話</label>
+              <input type="tel" id="address-phone" required />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="address-city">城市</label>
+                <input type="text" id="address-city" required />
+              </div>
+              <div class="form-group">
+                <label for="address-district">區域</label>
+                <input type="text" id="address-district" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="address-street">詳細地址</label>
+              <input type="text" id="address-street" required />
+            </div>
+            <div class="form-group">
+              <label for="address-postal">郵遞區號</label>
+              <input type="text" id="address-postal" required />
+            </div>
+            <div class="form-actions">
+              <button
+                type="button"
+                class="btn-secondary"
+                onclick="closeAddAddressModal()"
+              >
+                取消
+              </button>
+              <button type="submit" class="btn-primary">儲存地址</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- 更改密碼模態框 -->
+    <div class="modal" id="change-password-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>更改密碼</h3>
+          <button class="close-modal" onclick="closeChangePasswordModal()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="change-password-form">
+            <div class="form-group">
+              <label for="current-password">當前密碼</label>
+              <input type="password" id="current-password" required />
+            </div>
+            <div class="form-group">
+              <label for="new-password">新密碼</label>
+              <input type="password" id="new-password" required />
+            </div>
+            <div class="form-group">
+              <label for="confirm-password">確認新密碼</label>
+              <input type="password" id="confirm-password" required />
+            </div>
+            <div class="form-actions">
+              <button
+                type="button"
+                class="btn-secondary"
+                onclick="closeChangePasswordModal()"
+              >
+                取消
+              </button>
+              <button type="submit" class="btn-primary">更改密碼</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
